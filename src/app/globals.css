@@ -1,26 +1,223 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* F37 Elastica Sans — Narrow. Display-only face for big headlines. */
+@font-face {
+  font-family: "F37 Elastica";
+  src: url("/fonts/elastica/F37ElasticaSansTrial-Narrow.otf") format("opentype");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* Surfaces */
+  --color-cream: #f3f2ee;
+  --color-cream-soft: #f8f7f4;
+  --color-bg: #f9f4ea;
+
+  /* Ink */
+  --color-ink-950: #000000;
+  --color-ink-900: #0a0a0a;
+  --color-ink-800: #171717;
+  --color-ink-700: #2b2b2b;
+  --color-ink-600: #4a4a4a;
+  --color-ink-500: #6b6b6b;
+  --color-ink-400: #9a9a9a;
+  --color-ink-300: #c2c2c2;
+  --color-ink-200: #dedede;
+  --color-ink-100: #ececec;
+  --color-ink-50:  #f6f6f6;
+
+  /* Brand green — primary (Knock Twice) */
+  --color-brand-800: #155d3a;
+  --color-brand-700: #1c7a4b;
+  --color-brand-600: #259862;
+  --color-brand-500: #3dbf7a;
+  --color-brand-400: #6fd49c;
+  --color-brand-300: #a2e3bd;
+  --color-brand-200: #cff0dc;
+  --color-brand-100: #e3f6ea;
+  --color-brand-50:  #f1fbf5;
+
+  /* Legacy pink — retained for decorative sticker accents only */
+  --color-pink-700: #e073b0;
+  --color-pink-600: #ee98cd;
+  --color-pink-500: #f4b1dc;
+  --color-pink-400: #f8c9e6;
+  --color-pink-300: #fcd7ec;
+  --color-pink-200: #ffe3f1;
+  --color-pink-100: #ffeef6;
+
+  /* Section tones */
+  --color-golden: #ecb94a;
+  --color-golden-soft: #f7e1a6;
+  --color-peach:  #ffcfa8;
+  --color-peach-soft: #ffe6d2;
+  --color-tan:    #ede2d1;
+  --color-tan-soft: #f3eadb;
+  --color-sky:    #c3dff4;
+  --color-sky-soft:#e3effa;
+  --color-mint:   #bfe8c9;
+  --color-mint-soft:#dff3e4;
+  --color-lilac:  #d9cef4;
+  --color-lilac-soft:#ece7f9;
+  --color-coral:  #ff7a85;
+  --color-coral-500: #ff7a85;
+  --color-coral-600: #ff5a66;
+  --color-coral-700: #e63d49;
+
+  /* Radii */
+  --radius-pill: 9999px;
+  --radius-card: 28px;
+  --radius-card-lg: 40px;
+
+  /* Shadows */
+  --shadow-soft: 0 10px 30px -12px rgba(0, 0, 0, 0.14);
+  --shadow-soft-lg: 0 24px 48px -18px rgba(0, 0, 0, 0.22);
+  --shadow-sticker: 0 8px 18px -10px rgba(0, 0, 0, 0.3);
+
+  /* Fonts */
+  --font-sans: var(--font-zagma), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "F37 Elastica", var(--font-anton), "Amsi Pro Condensed", "Oswald", "Bebas Neue", Impact, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  ::selection {
+    background: var(--color-pink-500);
+    color: var(--color-ink-900);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Display typography (thanks.co-style chunky condensed caps) */
+@layer utilities {
+  .text-mega {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 6.5vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+  }
+
+  .text-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.25rem, 5vw, 4.25rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .text-headline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.625rem, 3.5vw, 2.5rem);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+  }
+
+  .text-body-lg {
+    @apply text-lg leading-relaxed text-ink-800;
+    font-weight: 500;
+  }
+
+  .text-body {
+    @apply text-base leading-relaxed text-ink-800;
+    font-weight: 500;
+  }
+
+  .text-caption {
+    font-family: var(--font-mono-display), ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-600);
+  }
+
+  /* Eyebrow / all-caps small labels: any element that combines `uppercase`
+     with a positive letter-spacing utility gets F37 Ginger Mono Bold. The
+     selector intentionally excludes negative/tight tracking (used on large
+     display text like .scroll-velocity) and untracked uppercase (gravity-text
+     hero title). */
+  .uppercase.tracking-wide,
+  .uppercase.tracking-wider,
+  .uppercase.tracking-widest,
+  .uppercase[class*="tracking-[0."] {
+    font-family: var(--font-mono-display), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-soft-lg { box-shadow: var(--shadow-soft-lg); }
+  .shadow-sticker { box-shadow: var(--shadow-sticker); }
 }
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes float-bob {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50%      { transform: translateY(-6px) rotate(var(--rot, 0deg)); }
+}
+.animate-float-bob {
+  animation: float-bob 4s ease-in-out infinite;
+}
+
+/* Logo pill hover: grow + quick shake. Uses transform-origin center so the
+   pill scales from its middle without nudging neighbors. z-index lifts the
+   hovered pill above the shadow edges of adjacent pills. */
+@keyframes pill-wiggle {
+  0%   { transform: scale(1.12) rotate(0deg); }
+  25%  { transform: scale(1.12) rotate(-4deg); }
+  50%  { transform: scale(1.12) rotate(3deg); }
+  75%  { transform: scale(1.12) rotate(-2deg); }
+  100% { transform: scale(1.12) rotate(0deg); }
+}
+.logo-pill {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  transform-origin: center;
+}
+.logo-pill:hover {
+  animation: pill-wiggle 520ms ease-in-out;
+  transform: scale(1.12);
+  box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.18);
+  z-index: 2;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+/* Horizontal scroll-snap carousel */
+.snap-scroller {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.snap-scroller::-webkit-scrollbar { display: none; }
+.snap-scroller > * { scroll-snap-align: start; }
