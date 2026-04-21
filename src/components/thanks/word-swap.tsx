@@ -92,7 +92,7 @@ export function WordSwap({
       cancelled = true;
       tl?.kill();
     };
-  }, [phrases, pauseMs]);
+  }, [phrases, pauseMs, initialDelayMs]);
 
   return (
     <span

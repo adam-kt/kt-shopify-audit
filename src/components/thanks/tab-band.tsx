@@ -140,7 +140,6 @@ export function TabBand({ id, tone, eyebrow, headline, subhead, slides }: TabBan
       cancelled = true;
       window.removeEventListener("resize", onResize);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Animate on active change.

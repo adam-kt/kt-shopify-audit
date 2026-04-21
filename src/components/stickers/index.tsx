@@ -1,4 +1,4 @@
-import { type SVGProps } from "react";
+import type { SVGProps } from "react";
 import { Icon } from "@/components/icons/icon";
 
 /**
@@ -25,43 +25,43 @@ const palette = {
 
 // Icons mapped from public/icons — each call uses the corresponding
 // name and passes `primary` / `secondary` to re-tint the two-tone art.
-export function HeartSticker(_: Props) {
+export function HeartSticker() {
   return <Icon name="Secure_Shild_Verified" primary={palette.coral} secondary={palette.butter} />;
 }
 
-export function CoinSticker(_: Props) {
+export function CoinSticker() {
   return <Icon name="Alert_Bell" primary={palette.butter} secondary={palette.coral} />;
 }
 
-export function SmileySticker(_: Props) {
+export function SmileySticker() {
   return <Icon name="Alert_Check" primary={palette.butter} secondary={palette.butter} />;
 }
 
-export function CursorSticker(_: Props) {
+export function CursorSticker() {
   return <Icon name="View" primary={palette.lavender} secondary={palette.butter} />;
 }
 
-export function MailSticker(_: Props) {
+export function MailSticker() {
   return <Icon name="Share" primary={palette.sky} secondary={palette.butter} />;
 }
 
-export function StarSticker(_: Props) {
+export function StarSticker() {
   return <Icon name="Settings_Approved" primary={palette.butter} secondary={palette.coral} />;
 }
 
-export function LightningSticker(_: Props) {
+export function LightningSticker() {
   return <Icon name="Alerts_Triangle" primary={palette.coral} secondary={palette.butter} />;
 }
 
-export function ChartSticker(_: Props) {
+export function ChartSticker() {
   return <Icon name="Image_Article" primary={palette.mint} secondary={palette.coral} />;
 }
 
-export function SparkleSticker(_: Props) {
+export function SparkleSticker() {
   return <Icon name="Image_Illustration" primary={palette.lilac} secondary={palette.butter} />;
 }
 
-export function PartySticker(_: Props) {
+export function PartySticker() {
   return <Icon name="Share_Megaphone" primary={palette.coral} secondary={palette.butter} />;
 }
 

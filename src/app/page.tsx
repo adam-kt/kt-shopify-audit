@@ -16,7 +16,6 @@ import {
   HeartSticker,
   SparkleSticker,
   CursorSticker,
-  MailSticker,
   LightningSticker,
   ChartSticker,
   StarSticker,

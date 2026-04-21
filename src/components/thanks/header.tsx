@@ -73,25 +73,25 @@ export function ThanksHeader() {
             )}
           >
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="px-4 py-2 text-[14px] font-semibold text-ink-900 rounded-full hover:bg-ink-900/5 transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
 
         <div className="flex items-center gap-3">
-          <a
+          <Link
             ref={ctaRef}
             href="/#pricing"
             className="inline-flex items-center rounded-full bg-ink-950 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white hover:bg-ink-800 transition-colors shadow-soft"
           >
             Get my audit
-          </a>
+          </Link>
           <button
             className="lg:hidden inline-flex items-center justify-center h-11 w-11 rounded-full bg-white/70 backdrop-blur-md text-ink-900 hover:bg-ink-100 transition-colors shadow-soft"
             aria-label="Open menu"
