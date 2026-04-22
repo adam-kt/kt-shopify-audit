@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Knock Twice" }],
   creator: "Knock Twice",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://audit.knocktwice.io"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://auditshopify.com"
   ),
   openGraph: {
     type: "website",
