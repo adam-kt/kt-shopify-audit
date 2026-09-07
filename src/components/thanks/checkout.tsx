@@ -114,9 +114,9 @@ export function ThanksCheckout() {
         {/* Value anchor bar */}
         <div className="mx-auto max-w-3xl mt-12 grid grid-cols-3 rounded-[var(--radius-card)] border border-ink-200 bg-white shadow-soft overflow-hidden">
           {[
-            { k: "73%", v: "of Shopify stores leak revenue on mobile" },
-            { k: "up to 40%", v: "lift from fixing top UX friction" },
+            { k: "7", v: "surfaces reviewed — homepage to checkout, desktop and mobile" },
             { k: "5 days", v: "from purchase to findings in your inbox" },
+            { k: "30 days", v: "later, a free rescan to confirm the fixes landed" },
           ].map((s, i) => (
             <div
               key={i}

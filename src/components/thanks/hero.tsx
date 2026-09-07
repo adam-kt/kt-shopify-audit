@@ -15,14 +15,6 @@ import omura from "@/logos/omura.png";
 import rAndR from "@/logos/r-and-r.png";
 import tache from "@/logos/tache.webp";
 import madrinas from "@/logos/madrinas.svg";
-import brandA from "@/logos/brand-a.png";
-import brandB from "@/logos/brand-b.svg";
-import brandC from "@/logos/brand-c.svg";
-import brandD from "@/logos/brand-d.svg";
-import brandE from "@/logos/brand-e.png";
-import brandF from "@/logos/brand-f.svg";
-import brandG from "@/logos/brand-g.png";
-import brandH from "@/logos/brand-h.webp";
 import barbaraKatz from "@/logos/barbara-katz.webp";
 import chused from "@/logos/chused.webp";
 
@@ -41,17 +33,12 @@ const logoStrip: LogoItem[] = [
   { src: rAndR, alt: "R&R" },
   { src: tache, alt: "Tache" },
   { src: madrinas, alt: "Madrinas" },
-  { src: brandA, alt: "Brand" },
-  { src: brandB, alt: "Brand" },
-  { src: brandC, alt: "Brand" },
-  { src: brandD, alt: "Brand" },
-  { src: brandE, alt: "Brand" },
-  { src: brandF, alt: "Brand" },
-  { src: brandG, alt: "Brand" },
-  { src: brandH, alt: "Brand" },
   { src: barbaraKatz, alt: "Barbara Katz", invert: true },
   { src: chused, alt: "Chused & Co", invert: true },
 ];
+
+/** How many times the logo strip is repeated to fill the marquee track. */
+const MARQUEE_COPIES = 3;
 
 const variants: string[] = [
   "that pays for itself",
@@ -71,9 +58,10 @@ export function ThanksHero() {
   useGsapHoverPop(ctaRef, { scale: 1.05, rotate: -1.5 });
   useGsapHoverPop(ghostRef, { scale: 1.03, rotate: 0 });
 
-  // GSAP-driven seamless marquee. The strip is rendered twice; we translate
-  // the track from 0 to -halfWidth then repeat — because the halves are
-  // identical, the reset is invisible. ResizeObserver re-measures when
+  // GSAP-driven seamless marquee. The strip is rendered MARQUEE_COPIES times;
+  // we translate the track by one copy's width then repeat — because the copies
+  // are identical, the reset is invisible. Three copies keeps the track wider
+  // than the viewport on ultrawide displays. ResizeObserver re-measures when
   // images load or the viewport changes.
   useEffect(() => {
     const track = marqueeRef.current;
@@ -87,11 +75,11 @@ export function ThanksHero() {
       if (!gsapMod || !track) return;
       tween?.kill();
       gsapMod.set(track, { x: 0 });
-      const halfWidth = track.scrollWidth / 2;
-      if (!halfWidth) return;
+      const copyWidth = track.scrollWidth / MARQUEE_COPIES;
+      if (!copyWidth) return;
       tween = gsapMod.to(track, {
-        x: -halfWidth,
-        duration: halfWidth / 60, // ~60 px/sec
+        x: -copyWidth,
+        duration: copyWidth / 60, // ~60 px/sec
         ease: "none",
         repeat: -1,
       });
@@ -214,9 +202,9 @@ export function ThanksHero() {
           ref={subheadRef}
           className="mt-6 sm:mt-8 max-w-xl text-center text-[15px] sm:text-[17px] font-medium text-ink-800 leading-relaxed"
         >
-          A hand-crafted conversion review of your Shopify storefront.
-          Prioritized findings, annotated screenshots, and a 30-day rescan —
-          delivered in 5 business days.
+          A conversion review of your Shopify storefront, verified against your
+          live store data. Prioritized findings, annotated screenshots, and a
+          30-day rescan — delivered in 5 business days.
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
@@ -238,7 +226,7 @@ export function ThanksHero() {
         </div>
 
         <p className="mt-5 text-[12px] font-semibold text-ink-600 uppercase tracking-[0.12em]">
-          Delivered in 5 business days · Hand-reviewed by humans · Free 30-day rescan
+          Delivered in 5 business days · Every claim verified · Free 30-day rescan
         </p>
       </div>
 
@@ -251,26 +239,28 @@ export function ThanksHero() {
             ref={marqueeRef}
             className="flex items-center gap-5 sm:gap-7 whitespace-nowrap w-max will-change-transform"
           >
-            {[...logoStrip, ...logoStrip].map((logo, i) => (
-              <div
-                key={`${logo.alt}-${i}`}
-                className="logo-pill flex-shrink-0 h-14 px-7 rounded-full flex items-center justify-center bg-white/70 border border-ink-100 cursor-pointer"
-                aria-hidden
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={logo.src.src}
-                  alt={logo.alt}
-                  className="object-contain"
-                  style={{
-                    height: "28px",
-                    width: "auto",
-                    maxWidth: "140px",
-                    filter: logo.invert ? "invert(1)" : undefined,
-                  }}
-                />
-              </div>
-            ))}
+            {Array.from({ length: MARQUEE_COPIES }, () => logoStrip)
+              .flat()
+              .map((logo, i) => (
+                <div
+                  key={`${logo.alt}-${i}`}
+                  className="logo-pill flex-shrink-0 h-14 px-7 rounded-full flex items-center justify-center bg-white/70 border border-ink-100 cursor-pointer"
+                  aria-hidden
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={logo.src.src}
+                    alt={logo.alt}
+                    className="object-contain"
+                    style={{
+                      height: "28px",
+                      width: "auto",
+                      maxWidth: "140px",
+                      filter: logo.invert ? "invert(1)" : undefined,
+                    }}
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </div>

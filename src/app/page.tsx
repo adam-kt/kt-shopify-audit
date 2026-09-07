@@ -43,8 +43,8 @@ export default function HomePage() {
 
         <IntroText>
           Every Shopify store leaks revenue. Most leaks are small but fixable.
-          We review your storefront by hand and deliver the highest-impact fixes —
-          ranked by revenue, shipped in 5 business days.
+          We measure your storefront against its own live data, then rank the
+          highest-impact fixes by hand — shipped in 5 business days.
         </IntroText>
 
         <SuperHeadline eyebrow="How it works">
@@ -222,7 +222,7 @@ export default function HomePage() {
             {
               label: "Mobile",
               title: "Mobile experience",
-              body: "Where 73% of traffic meets the friction. Sticky elements, tap targets, scroll depth, and mobile-specific drop-offs.",
+              body: "The surface most stores optimize last. Sticky elements, tap targets, scroll depth, and mobile-specific drop-offs.",
               tone: "mint",
               image: reviewMobile,
               imageAlt: "Mobile experience review",
@@ -282,9 +282,9 @@ export default function HomePage() {
           headline="Built for revenue, not reports."
           subhead="Priced and scoped to be a no-brainer next to a $15K agency audit."
           stats={[
-            { value: "2.7×", label: "avg conversion lift after top 3 fixes" },
             { value: "5 days", label: "from purchase to findings in your inbox" },
             { value: "$750", label: "flat price, no retainers, no upsells" },
+            { value: "Free", label: "30-day rescan once your fixes ship" },
           ]}
         />
 
@@ -300,8 +300,8 @@ export default function HomePage() {
           items={[
             {
               sticker: <CursorSticker />,
-              title: "Manual, not automated",
-              body: "Every audit conducted by hand by our team. No generic checklist, no AI slop — just the judgment of people who ship Shopify for a living.",
+              title: "Machine-verified, human-judged",
+              body: "Every numeric claim is checked against your store's live catalog data before it ships. Every recommendation is written by someone who ships Shopify for a living — no generic checklists, no unverified guesses.",
             },
             {
               sticker: <SparkleSticker />,
