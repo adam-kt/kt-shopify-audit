@@ -29,60 +29,7 @@ import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
-type Severity = "high" | "med" | "ok";
-
-const SEVERITY: Record<Severity, { label: string; dot: string; text: string }> = {
-  high: { label: "High", dot: "bg-red-500", text: "text-red-400" },
-  med: { label: "Medium", dot: "bg-amber-500", text: "text-amber-400" },
-  ok: { label: "Working", dot: "bg-emerald-500", text: "text-emerald-400" },
-};
-
-const FINDINGS: {
-  rank: string;
-  severity: Severity;
-  surface: string;
-  title: string;
-  impact: string;
-}[] = [
-  {
-    rank: "F.01",
-    severity: "high",
-    surface: "Mobile PDP",
-    title: "No sticky add-to-cart on product pages",
-    impact:
-      "On longer pages the buy button scrolls out of reach and stays there.",
-  },
-  {
-    rank: "F.02",
-    severity: "high",
-    surface: "Cart",
-    title: "No confidence cues before checkout",
-    impact:
-      "Shipping threshold, returns policy and trust marks are all absent at the decision point.",
-  },
-  {
-    rank: "F.03",
-    severity: "high",
-    surface: "Navigation",
-    title: "Best sellers sit two taps deep",
-    impact:
-      "Reaching the collection needs a mega-menu hover that does not exist on touch.",
-  },
-  {
-    rank: "F.04",
-    severity: "med",
-    surface: "Product page",
-    title: "Selected variant has low contrast",
-    impact: "The chosen size is hard to confirm before adding to cart.",
-  },
-  {
-    rank: "F.05",
-    severity: "ok",
-    surface: "Checkout",
-    title: "Shop Pay is well positioned",
-    impact: "Working as intended. Flagged so nobody moves it.",
-  },
-];
+import { FINDINGS, SEVERITY } from "@/content/findings";
 
 export function SiteDeliverable() {
   const reduceMotion = useReducedMotion();
@@ -136,7 +83,7 @@ export function SiteDeliverable() {
 
                   <div className="min-w-0 flex-1">
                     <p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-                      {f.surface}
+                      {f.area}
                     </p>
                     <p className="mt-1 text-sm font-semibold">{f.title}</p>
                     <p className="text-muted-foreground mt-1 text-sm">
@@ -149,7 +96,7 @@ export function SiteDeliverable() {
           </ul>
 
           <p className="text-muted-foreground border-t px-5 py-3 text-xs">
-            Five of the findings from a recent audit. Each one appears again in
+            Six of the findings from a recent audit. Each one appears again in
             the document on an annotated screenshot of the page it was found on.
           </p>
         </div>

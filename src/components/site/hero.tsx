@@ -29,12 +29,14 @@
  */
 
 import Link from "next/link";
-import Image, { type StaticImageData } from "next/image";
+import { type StaticImageData } from "next/image";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LogoCloud } from "./logo-cloud";
+import { ReviewSlide } from "./review-slide";
+import { type Surface } from "@/content/findings";
 
 import homepageTrust from "@/images/review/homepage-trust.png";
 import productEvidence from "@/images/review/product-evidence.png";
@@ -48,11 +50,16 @@ const HEADLINE_VARIANTS = [
   "breaks down.",
 ];
 
-const TAB_ITEMS: { title: string; image: StaticImageData; alt: string }[] = [
-  { title: "Homepage", image: homepageTrust, alt: "Homepage trust and clarity review" },
-  { title: "Product pages", image: productEvidence, alt: "Product page evidence review" },
-  { title: "Cart & checkout", image: cartFunnel, alt: "Cart and checkout funnel review" },
-  { title: "Mobile", image: mobileThumb, alt: "Mobile experience review" },
+const TAB_ITEMS: {
+  title: string;
+  surface: Surface;
+  image: StaticImageData;
+  alt: string;
+}[] = [
+  { title: "Homepage", surface: "homepage", image: homepageTrust, alt: "Homepage under review" },
+  { title: "Product pages", surface: "product", image: productEvidence, alt: "Product page under review" },
+  { title: "Cart & checkout", surface: "cart", image: cartFunnel, alt: "Cart and checkout under review" },
+  { title: "Mobile", surface: "mobile", image: mobileThumb, alt: "Mobile experience under review" },
 ];
 
 const ROTATE_MS = 10000;
@@ -233,15 +240,15 @@ export const ReviewWindow = () => {
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="bg-background relative h-100 overflow-hidden rounded-tl-xl rounded-tr-xl shadow-sm ring-1 shadow-black/10 ring-black/10 will-change-transform sm:h-140 md:h-180"
+            // Below lg the finding cards render as a list under the screenshot, so the
+            // panel has to grow with them. Fixed height only from lg, where the
+            // cards float over the image instead.
+            className="bg-background relative min-h-125 overflow-hidden rounded-tl-xl rounded-tr-xl shadow-sm ring-1 shadow-black/10 ring-black/10 will-change-transform sm:min-h-140 lg:h-180"
           >
-            <Image
-              src={selectedItem.image}
+            <ReviewSlide
+              surface={selectedItem.surface}
+              image={selectedItem.image}
               alt={selectedItem.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, 1200px"
-              placeholder="blur"
-              className="object-cover object-top"
               priority={selectedIndex === 0}
             />
           </motion.div>
