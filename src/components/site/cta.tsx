@@ -31,7 +31,7 @@ import { cn } from "@/lib/utils";
  *  This column carries the objections that remain at the point of decision. */
 const REASSURANCES = [
   "No admin access, no app install, no code on your site.",
-  "Full refund if we have not started your review.",
+  "Full refund if we haven't started your review.",
   "One payment. No retainer, no subscription.",
 ];
 

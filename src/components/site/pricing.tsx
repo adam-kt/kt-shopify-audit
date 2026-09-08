@@ -41,12 +41,12 @@ const track = (event: string, params?: Record<string, unknown>) => {
 };
 
 const AUDIT_FEATURES = [
-  "Every page from homepage to checkout, on desktop and phone",
-  "Findings ranked by what's worth doing first",
-  "An annotated screenshot for every finding",
-  "Every number checked against your live store data",
-  "Delivered in five business days",
-  "Free rescan 30 days after you ship",
+  "Every page, desktop and phone",
+  "Findings ranked by impact",
+  "An annotated screenshot per finding",
+  "Claims checked against your live store data",
+  "Five business days",
+  "30-day rescan included",
 ];
 
 /** Moved up from the closing CTA. Someone weighing $750 wants to know what
@@ -61,9 +61,9 @@ const STEPS = [
 const IMPLEMENTATION_FEATURES = [
   "Everything in the audit",
   "We make the changes ourselves",
-  "Quoted from the findings, once you've read them",
+  "Quoted once you've read the findings",
   "Work sequenced by the same ranking",
-  "Rescan once the work is done",
+  "Rescan when the work is done",
 ];
 
 export function SitePricing() {

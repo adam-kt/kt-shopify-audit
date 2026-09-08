@@ -96,8 +96,8 @@ export function SiteHero() {
             </div>
 
             <p className="text-muted-foreground mt-6 text-xs font-semibold uppercase tracking-[0.12em]">
-              Five days &middot; Every number checked against your store
-              &middot; Free rescan
+              Five business days &middot; Every number checked against your
+              store &middot; Free rescan
             </p>
           </div>
 

@@ -27,42 +27,42 @@ const FAQS = [
   {
     question: "Who is this for?",
     answer:
-      "Shopify brands at the point where a couple of points of conversion move a number that matters. Usually that is a founder, an ecommerce manager or a growth lead at a store doing enough volume that small changes compound. If you already suspect the store could be doing better but cannot say which change to make first, that is the gap this fills.",
+      "Shopify brands at the point where a couple of points of conversion move a number that matters. Usually that's a founder, an ecommerce manager or a growth lead at a store doing enough volume that small changes compound. If you already suspect the store could be doing better but can't say which change to make first, that's the gap this fills.",
   },
   {
     question: "Do you work with stores on other platforms?",
     answer:
-      "No, Shopify storefronts only. Themes, apps, variant handling, cart behaviour and the checkout all work in particular ways on Shopify, and knowing those specifics is what keeps the recommendations buildable. A platform-agnostic audit tends to produce advice your developer then has to translate before anyone can act on it.",
+      "No, Shopify storefronts only. Themes, apps, variant handling, cart behavior and the checkout all work in particular ways on Shopify, and knowing those specifics is what keeps the recommendations buildable. A platform-agnostic audit tends to produce advice your developer then has to translate before anyone can act on it.",
   },
   {
     question: "What exactly do I receive?",
     answer:
-      "A single document rather than a deck. Every finding is ranked by what is worth doing first, and each one appears on an annotated screenshot of your own store showing the element in question and the change we suggest. There is a short order of work at the end so the list can go straight into a sprint. Thirty days later you get a rescan report covering what shipped, what did not, and anything new that has appeared since.",
+      "A single document rather than a deck. Every finding is ranked by what's worth doing first, and each one appears on an annotated screenshot of your own store showing the element in question and the change we suggest. There's a short order of work at the end so the list can go straight into a sprint. Thirty days later you get a rescan report covering what shipped, what didn't, and anything new that's appeared since.",
   },
   {
     question: "What do you need from me?",
     answer:
-      "Your store URL and about five minutes on the intake form. We review the public storefront the same way a customer sees it, so there is no admin access to grant, no app to install and no code to add to your site. If there are particular pages, products or hypotheses you want examined closely, the intake form is where to tell us.",
+      "Your store URL and about five minutes on the intake form. We review the public storefront the same way a customer sees it, so there's no admin access to grant, no app to install and no code to add to your site. If there are particular pages, products or hypotheses you want examined closely, the intake form is where to tell us.",
   },
   {
     question: "How long does it take?",
     answer:
-      "Five business days from the moment you submit the intake form. If we need something from you during the review we will ask, but the timeline assumes we will not have to.",
+      "Five business days from the moment you submit the intake form. If we need something from you during the review we'll ask, but the timeline assumes we won't have to.",
   },
   {
     question: "Do you implement the recommendations?",
     answer:
-      "Not as part of the $750 audit, which is analysis and recommendations. Most clients hand the document to their own developer or agency, since the findings are written to be picked up directly. If you would rather we made the changes, we quote that separately once you have read the findings, so you are scoping against a real list instead of an estimate.",
+      "Not as part of the $750 audit, which is analysis and recommendations. Most clients hand the document to their own developer or agency, since the findings are written to be picked up directly. If you'd rather we made the changes, we quote that separately once you've read the findings, so you're scoping against a real list instead of an estimate.",
   },
   {
     question: "What if we already have an agency or an in-house team?",
     answer:
-      "That is usually the better case. A team that already knows the codebase can act on a ranked list immediately, and the ranking settles the argument about what goes first. The audit is written as input for people who are already building, not as a replacement for them.",
+      "That's usually the better case. A team that already knows the codebase can act on a ranked list immediately, and the ranking settles the argument about what goes first. The audit is written as input for people who are already building, not as a replacement for them.",
   },
   {
-    question: "What if you do not find much?",
+    question: "What if you don't find much?",
     answer:
-      "The document contains what the review actually surfaces. Every finding is checked against your live store data before it goes in, so nothing is padded to make the list look longer. If we have not started your review, you can have a full refund.",
+      "The document contains what the review actually surfaces. Every finding is checked against your live store data before it goes in, so nothing's padded to make the list look longer. If we haven't started your review, you can have a full refund.",
   },
 ];
 

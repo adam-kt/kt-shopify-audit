@@ -80,8 +80,8 @@ export function SiteFeatures() {
           What you actually get
         </h2>
         <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-center text-base text-balance md:text-lg">
-          One document, five days after you send us your URL. Everything ranked,
-          everything shown on your own pages.
+          One document, five business days after you send us your URL.
+          Everything ranked, everything shown on your own pages.
         </p>
 
         <div className="mt-10 grid w-full grid-cols-1 gap-1 md:mt-14 md:grid-cols-3 md:grid-rows-2">
