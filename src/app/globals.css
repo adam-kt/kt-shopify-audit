@@ -120,6 +120,20 @@
 }
 
 @layer base {
+  /* Visible keyboard focus for every interactive element, including the
+     vendored registry blocks. `:where()` keeps specificity at 0 so any
+     component can still override it. Without this the page had focus styles
+     on exactly two form inputs out of 35 tabbable elements (WCAG 2.4.7). */
+  :where(a, button, summary, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* Native marker is hidden on our <summary>; keep the focus ring hugging it. */
+  :where(summary):focus-visible {
+    outline-offset: 4px;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }

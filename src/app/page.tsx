@@ -5,6 +5,7 @@ import { SitePricing } from "@/components/site/pricing";
 import { SiteFaq } from "@/components/site/faq";
 import { SiteCta } from "@/components/site/cta";
 import { SiteFooter } from "@/components/site/footer";
+import { MobileStickyCta } from "@/components/site/mobile-sticky-cta";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
         {/* B3 deliverable preview pending. See docs/aceternity-migration.md */}
       </main>
       <SiteFooter />
+      <MobileStickyCta />
     </>
   );
 }

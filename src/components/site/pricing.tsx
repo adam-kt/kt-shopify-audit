@@ -49,6 +49,15 @@ const AUDIT_FEATURES = [
   "Free rescan 30 days after you ship",
 ];
 
+/** Moved up from the closing CTA. Someone weighing $750 wants to know what
+ *  they are signing up for before the price, not four viewports after it. */
+const STEPS = [
+  "Send your store URL and fill in the intake form. About five minutes.",
+  "We review the storefront and check every finding against your live store data.",
+  "Five business days later the document is in your inbox.",
+  "Thirty days after you ship, we rescan and confirm what landed.",
+];
+
 const IMPLEMENTATION_FEATURES = [
   "Everything in the audit",
   "We make the changes ourselves",
@@ -71,7 +80,18 @@ export function SitePricing() {
           we&rsquo;ll quote that once you&rsquo;ve seen the findings.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 md:grid-cols-2">
+        <ol className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {STEPS.map((step, i) => (
+            <li key={step} className="flex gap-3">
+              <span className="bg-muted text-foreground flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold tabular-nums">
+                {i + 1}
+              </span>
+              <span className="text-muted-foreground text-sm">{step}</span>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
           <PlanCard
             featured
             name="The audit"

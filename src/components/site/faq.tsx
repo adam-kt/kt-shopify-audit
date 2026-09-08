@@ -89,10 +89,10 @@ export function SiteFaq() {
         <div className="divide-border divide-y">
           {FAQS.map((faq) => (
             <details key={faq.question} className="group py-4">
-              <summary className="flex cursor-pointer list-none items-start gap-4 [&::-webkit-details-marker]:hidden">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center gap-4 py-1 [&::-webkit-details-marker]:hidden">
                 <IconPlus
                   aria-hidden
-                  className="text-muted-foreground mt-0.5 size-5 shrink-0 transition-transform duration-200 group-open:rotate-45"
+                  className="text-muted-foreground size-5 shrink-0 transition-transform duration-200 group-open:rotate-45"
                 />
                 <h3 className="text-base font-medium md:text-lg">
                   {faq.question}

@@ -25,7 +25,9 @@
  * those bullets can only tell. Keep the two from restating each other.
  */
 
+import Link from "next/link";
 import React from "react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface FeatureCard {
@@ -86,6 +88,18 @@ export function SiteFeatures() {
           {CARDS.map((card) => (
             <Card key={card.title} {...card} />
           ))}
+        </div>
+
+        {/* Without this the page runs three viewports between the hero CTA and
+            the pricing section with no way to act. */}
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="#pricing"
+            className="bg-primary text-primary-foreground inline-flex min-h-11 items-center gap-2 rounded-lg px-6 text-sm font-semibold"
+          >
+            Get my audit for $750
+            <ArrowRight className="size-4" />
+          </Link>
         </div>
       </div>
     </section>

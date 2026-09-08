@@ -54,7 +54,7 @@ export function SiteNavbar() {
             <div className="flex w-full items-center justify-between gap-3 md:w-auto">
               <Link
                 href="/"
-                className="flex items-center gap-2.5"
+                className="flex min-h-11 items-center gap-2.5"
                 aria-label="Knock Twice home"
               >
                 <CircleLogo size={34} />
@@ -68,7 +68,7 @@ export function SiteNavbar() {
                 aria-label={open ? "Close menu" : "Open menu"}
                 aria-expanded={open}
                 aria-controls="site-mobile-menu"
-                className="hover:bg-muted inline-flex size-10 items-center justify-center rounded-md border md:hidden"
+                className="hover:bg-muted inline-flex size-11 items-center justify-center rounded-md border md:hidden"
                 onClick={() => setOpen((s) => !s)}
                 whileTap={{ scale: 0.92 }}
               >

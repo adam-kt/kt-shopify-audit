@@ -63,17 +63,21 @@ export function SiteHero() {
   return (
     <section className="mx-auto w-full max-w-7xl min-w-0 px-4 pt-28 pb-8 md:px-8 md:pt-36 md:pb-12 lg:px-12">
       <div className="flex w-full min-w-0 flex-col items-start">
+        <p className="text-muted-foreground mb-4 text-sm font-semibold tracking-[0.14em] uppercase">
+          Shopify conversion audit
+        </p>
+
         <h1 className="relative max-w-5xl text-left text-4xl font-bold tracking-tight text-balance sm:text-5xl md:text-6xl xl:text-7xl">
           Where your store <RotatingHeadline />
         </h1>
 
         <div className="mt-6 flex w-full flex-col items-start justify-between gap-4 md:mt-10 md:flex-row md:items-end md:gap-10">
           <div>
-            <h2 className="text-muted-foreground relative mb-8 max-w-2xl text-left text-sm tracking-wide antialiased sm:text-base md:text-lg">
+            <p className="text-muted-foreground relative mb-8 max-w-2xl text-left text-sm tracking-wide antialiased sm:text-base md:text-lg">
               Most stores have more worth fixing than there&rsquo;s time to fix.
               We go through every page, then tell you which handful actually
               matters and show you exactly where each one is.
-            </h2>
+            </p>
 
             <div className="relative mb-4 flex w-full flex-col justify-center gap-y-2 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4">
               <Link
@@ -204,7 +208,7 @@ export const ReviewWindow = () => {
                 tabIndex={selectedIndex === index ? 0 : -1}
                 onClick={() => select(index)}
                 className={cn(
-                  "hover:bg-background flex shrink-0 items-center gap-1 rounded-md px-2.5 py-1 text-xs transition duration-150 sm:text-sm",
+                  "hover:bg-background flex min-h-11 shrink-0 items-center gap-1 rounded-md px-3 text-xs transition duration-150 sm:text-sm",
                   selectedIndex === index && "bg-background shadow ring-1 ring-black/10"
                 )}
               >

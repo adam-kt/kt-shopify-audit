@@ -38,7 +38,7 @@ export function SiteFooter() {
           <Link
             href="/"
             aria-label="Knock Twice home"
-            className="mb-6 flex items-center gap-2.5"
+            className="mb-6 flex min-h-11 items-center gap-2.5"
           >
             <CircleLogo size={32} />
             <span className="text-foreground font-medium">Knock Twice</span>
@@ -50,7 +50,7 @@ export function SiteFooter() {
                 <li key={link.href} className="list-none">
                   <Link
                     href={link.href}
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-foreground flex min-h-11 items-center px-2 transition-colors"
                   >
                     {link.title}
                   </Link>
@@ -66,7 +66,7 @@ export function SiteFooter() {
           <p>&copy; {new Date().getFullYear()} Knock Twice</p>
           <a
             href="mailto:hello@knocktwice.io"
-            className="hover:text-foreground transition-colors"
+            className="hover:text-foreground flex min-h-11 items-center transition-colors"
           >
             hello@knocktwice.io
           </a>

@@ -27,11 +27,12 @@ import React from "react";
 import { ArrowRight, MessageCircleQuestion } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const STEPS = [
-  "Send your store URL and fill in the intake form. About five minutes.",
-  "We review the storefront and check every finding against your live store data.",
-  "Five business days later the document is in your inbox.",
-  "Thirty days after you ship, we rescan and confirm what landed.",
+/** The four-step process moved to the pricing section, where it is more use.
+ *  This column carries the objections that remain at the point of decision. */
+const REASSURANCES = [
+  "No admin access, no app install, no code on your site.",
+  "Full refund if we have not started your review.",
+  "One payment. No retainer, no subscription.",
 ];
 
 export function SiteCta() {
@@ -70,17 +71,14 @@ export function SiteCta() {
       </div>
 
       <div className="border-t border-dashed p-8 md:border-t-0 md:border-l md:p-14">
-        <p className="text-sm font-semibold tracking-tight">What happens next</p>
-        <ol className="mt-4 flex flex-col gap-4">
-          {STEPS.map((step, i) => (
-            <li key={step} className="flex gap-3">
-              <span className="text-muted-foreground mt-0.5 text-xs font-semibold tabular-nums">
-                {i + 1}
-              </span>
-              <span className="text-muted-foreground text-sm">{step}</span>
+        <p className="text-sm font-semibold tracking-tight">Before you ask</p>
+        <ul className="mt-4 flex flex-col gap-3">
+          {REASSURANCES.map((item) => (
+            <li key={item} className="text-muted-foreground text-sm">
+              {item}
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   );
