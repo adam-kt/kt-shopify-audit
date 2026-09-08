@@ -38,10 +38,13 @@ import { LogoCloud } from "./logo-cloud";
 import { ReviewSlide } from "./review-slide";
 import { type Surface } from "@/content/findings";
 
-import homepageTrust from "@/images/review/homepage-trust.png";
-import productEvidence from "@/images/review/product-evidence.png";
-import cartFunnel from "@/images/review/cart-funnel.png";
-import mobileThumb from "@/images/review/mobile-thumb.png";
+// Storefront captures, not pages of the audit document. Cards showing findings
+// on top of a document that already lists findings read as findings-on-findings.
+// Source: a Shopify theme demo store, so no real merchant is being critiqued.
+import storefrontHome from "@/images/storefront/home.png";
+import storefrontPdp from "@/images/storefront/pdp.png";
+import storefrontCart from "@/images/storefront/cart.png";
+import storefrontMobile from "@/images/storefront/mobile.png";
 
 const HEADLINE_VARIANTS = [
   "loses sales.",
@@ -56,10 +59,10 @@ const TAB_ITEMS: {
   image: StaticImageData;
   alt: string;
 }[] = [
-  { title: "Homepage", surface: "homepage", image: homepageTrust, alt: "Homepage under review" },
-  { title: "Product pages", surface: "product", image: productEvidence, alt: "Product page under review" },
-  { title: "Cart & checkout", surface: "cart", image: cartFunnel, alt: "Cart and checkout under review" },
-  { title: "Mobile", surface: "mobile", image: mobileThumb, alt: "Mobile experience under review" },
+  { title: "Homepage", surface: "homepage", image: storefrontHome, alt: "Storefront homepage under review" },
+  { title: "Product pages", surface: "product", image: storefrontPdp, alt: "Product page under review" },
+  { title: "Cart & checkout", surface: "cart", image: storefrontCart, alt: "Cart and checkout under review" },
+  { title: "Mobile", surface: "mobile", image: storefrontMobile, alt: "Mobile experience under review" },
 ];
 
 const ROTATE_MS = 10000;

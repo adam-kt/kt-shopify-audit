@@ -19,9 +19,11 @@
  * the cards have to stay readable, and the browser chrome around them is already
  * doing the "this is a real interface" work.
  *
- * Base images are the existing review captures for now. They are due to be
- * replaced with de-branded real storefronts, which is a one-line swap per slide
- * (see docs/hero-video-brief.md). The cards carry the meaning either way.
+ * Base images are storefront captures from a Shopify theme demo store, not pages
+ * of the audit document. Cards listing findings over a document that already
+ * lists findings read as findings-on-findings. A theme demo means no real
+ * merchant is publicly critiqued and no permission is needed, while still being
+ * a real, competently built storefront rather than a wireframe.
  */
 
 import Image, { type StaticImageData } from "next/image";
@@ -51,13 +53,12 @@ export function ReviewSlide({ surface, image, alt, priority }: ReviewSlideProps)
           sizes="(max-width: 768px) 100vw, 1200px"
           placeholder="blur"
           priority={priority}
-          // Held well back: these stand-ins are pages of the audit document, not
-          // storefronts, and still carry the fictional "Marlow & Grove" branding.
-          // See docs/hero-video-brief.md section 5 for the replacement spec.
-          className="object-cover object-top opacity-30 blur-[1px]"
+          // Legible enough to read as a real shop, held back enough that the
+          // finding cards stay the thing you look at.
+          className="object-cover object-top opacity-55"
         />
         {/* Darken so the cards and pins hold contrast over any screenshot. */}
-        <div aria-hidden className="from-background/90 via-background/50 absolute inset-0 bg-gradient-to-t to-transparent" />
+        <div aria-hidden className="from-background/85 via-background/40 absolute inset-0 bg-gradient-to-t to-transparent" />
 
         {findings.map((f, i) => {
           const sev = SEVERITY[f.severity];
