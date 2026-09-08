@@ -32,7 +32,7 @@ const LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative w-full overflow-hidden border-t px-8 py-16 md:py-20">
+    <footer className="relative w-full overflow-x-clip border-t px-8 py-16 md:py-20">
       <div className="text-muted-foreground mx-auto max-w-7xl items-start justify-between text-sm md:px-8">
         <div className="relative flex w-full flex-col items-center justify-center">
           <Link

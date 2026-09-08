@@ -36,7 +36,7 @@ const STEPS = [
 
 export function SiteCta() {
   return (
-    <section className="from-muted/60 to-background relative z-20 mx-auto my-20 grid w-full max-w-7xl grid-cols-1 justify-start bg-gradient-to-br md:my-32 md:grid-cols-3">
+    <section className="from-muted/60 to-background relative z-20 mx-auto my-20 grid w-full max-w-7xl grid-cols-1 justify-start overflow-x-clip bg-gradient-to-br md:my-32 md:grid-cols-3">
       <GridLineHorizontal className="top-0" offset="200px" />
       <GridLineHorizontal className="top-auto bottom-0" offset="200px" />
       <GridLineVertical className="left-0" offset="80px" />
