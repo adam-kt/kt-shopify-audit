@@ -74,10 +74,10 @@ export function SiteFeatures() {
       className="scroll-mt-28 px-4 py-16 md:px-8 md:py-24 lg:px-16"
     >
       <div className="mx-auto w-full max-w-6xl">
-        <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-balance md:text-4xl lg:text-5xl">
+        <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-balance md:text-4xl lg:text-5xl">
           What you actually get
         </h2>
-        <p className="text-muted-foreground mt-4 max-w-2xl text-base md:text-lg">
+        <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-center text-base text-balance md:text-lg">
           One document, five days after you send us your URL. Everything ranked,
           everything shown on your own pages.
         </p>
