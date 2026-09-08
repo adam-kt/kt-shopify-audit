@@ -16,7 +16,9 @@
  *    portraits presented as customers, the same fabricated social proof as the
  *    Unsplash cluster in the block we rejected earlier.
  *  - All 13 remote images gone; every asset is local.
- *  - Copy is the B2 text from docs/aceternity-migration.md.
+ *  - Copy rewritten: problem-framed headline, plainer subhead. Every claim
+ *    is still one that holds by construction — price, turnaround, scope,
+ *    rescan, verification. No outcome promises, no invented statistics.
  *  - Auto-rotation honours prefers-reduced-motion, and the tablist has proper
  *    tab/tabpanel semantics with arrow-key navigation, which upstream omits.
  */
@@ -27,6 +29,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { LogoCloud } from "./logo-cloud";
 
 import homepageTrust from "@/images/review/homepage-trust.png";
 import productEvidence from "@/images/review/product-evidence.png";
@@ -34,10 +37,10 @@ import cartFunnel from "@/images/review/cart-funnel.png";
 import mobileThumb from "@/images/review/mobile-thumb.png";
 
 const HEADLINE_VARIANTS = [
-  "that pays for itself",
-  "that finds hidden revenue",
-  "your competitors wish they had",
-  "ranked by ROI",
+  "you're losing sales.",
+  "buyers hesitate.",
+  "mobile drops off.",
+  "the funnel leaks.",
 ];
 
 const TAB_ITEMS: { title: string; image: StaticImageData; alt: string }[] = [
@@ -48,6 +51,8 @@ const TAB_ITEMS: { title: string; image: StaticImageData; alt: string }[] = [
 ];
 
 const ROTATE_MS = 10000;
+/** Long enough to read the whole sentence before it changes. */
+const HEADLINE_MS = 4200;
 
 export function SiteHero() {
   return (
@@ -62,15 +67,17 @@ export function SiteHero() {
         </span>
 
         <h1 className="relative mt-6 max-w-5xl text-left text-4xl font-bold tracking-tight text-balance sm:text-5xl md:text-6xl xl:text-7xl">
-          The Shopify audit <RotatingHeadline />
+          Find out exactly where <RotatingHeadline />
         </h1>
 
         <div className="mt-6 flex w-full flex-col items-start justify-between gap-4 md:mt-10 md:flex-row md:items-end md:gap-10">
           <div>
             <h2 className="text-muted-foreground relative mb-8 max-w-2xl text-left text-sm tracking-wide antialiased sm:text-base md:text-lg">
-              A conversion review of your Shopify storefront, verified against
-              your live store data. Prioritized findings, annotated screenshots,
-              and a 30-day rescan &mdash; delivered in 5 business days.
+              We go through your storefront the way a buyer does &mdash; homepage
+              to checkout, desktop and mobile &mdash; and check every finding
+              against your live store data. You get a ranked list of what&rsquo;s
+              costing you orders, with screenshots showing exactly what to change
+              and why it&rsquo;s worth doing first.
             </h2>
 
             <div className="relative mb-4 flex w-full flex-col justify-center gap-y-2 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4">
@@ -85,15 +92,19 @@ export function SiteHero() {
                 href="#what-you-get"
                 className="bg-card flex h-14 w-full items-center justify-center rounded-lg border text-base font-medium shadow-sm transition duration-150 active:scale-98 sm:w-52"
               >
-                See what&rsquo;s included
+                See what you get
               </Link>
             </div>
 
             <p className="text-muted-foreground mt-6 text-xs font-semibold uppercase tracking-[0.12em]">
-              Delivered in 5 business days &middot; Every claim verified &middot;
-              Free 30-day rescan
+              Five business days &middot; Every number checked against your live
+              store &middot; Free rescan a month later
             </p>
           </div>
+
+          {/* Upstream put its avatar cluster here. Client logos carry the same
+              weight without inventing customers. */}
+          <LogoCloud className="shrink-0" />
         </div>
 
         <ReviewWindow />
@@ -110,7 +121,7 @@ const RotatingHeadline = () => {
     if (reduceMotion) return;
     const id = setInterval(
       () => setIndex((v) => (v + 1) % HEADLINE_VARIANTS.length),
-      2800
+      HEADLINE_MS
     );
     return () => clearInterval(id);
   }, [reduceMotion]);

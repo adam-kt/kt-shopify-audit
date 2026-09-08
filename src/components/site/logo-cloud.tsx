@@ -1,7 +1,9 @@
 "use client";
 
 /**
- * B2 — client logo cloud.
+ * Client logo cloud — sits inside the hero, in the slot the upstream hero block
+ * used for its avatar cluster: right of the CTAs, bottom-aligned on desktop,
+ * above the browser window.
  *
  * Adapted from @aceternity/single-row-logo-cloud (src/block/single-row-logo-cloud.tsx,
  * pristine). Kept: the rotating set with the blur/slide transition.
@@ -11,6 +13,8 @@
  *    Y Combinator and others — under the heading "Trusted by the best". That is
  *    fabricated social proof and none of it may ship. Replaced with the nine
  *    real client logos, served locally.
+ *  - Laid out as a compact column rather than a full-width band, so it fits the
+ *    hero slot instead of occupying its own section.
  *  - Logos render monochrome, per-logo and theme-aware. Upstream's blanket
  *    `dark:invert` is wrong twice over: two of our marks are already
  *    white-on-transparent, so inverting them on a dark ground turns them black;
@@ -39,7 +43,9 @@ import barbaraKatz from "@/logos/barbara-katz.webp";
 import chused from "@/logos/chused.webp";
 
 const LOGOS_PER_ROW = 3;
-const ROTATE_MS = 2600;
+/** Slow hold — 2.6s cycled faster than the eye settles on a mark. */
+const ROTATE_MS = 6000;
+const FADE_S = 0.55;
 
 interface Logo {
   title: string;
@@ -71,7 +77,7 @@ const LOGOS: Logo[] = [
   { title: "Chused & Co", src: chused, lightMark: true },
 ];
 
-export function LogoCloud() {
+export function LogoCloud({ className }: { className?: string }) {
   const setCount = Math.ceil(LOGOS.length / LOGOS_PER_ROW);
   const [setIndex, setSetIndex] = useState(0);
   const reduceMotion = useReducedMotion();
@@ -91,44 +97,46 @@ export function LogoCloud() {
   );
 
   return (
-    <section className="mx-auto flex w-full max-w-4xl items-center justify-center px-4 py-12">
-      <div className="flex w-full flex-col items-center gap-6 md:flex-row md:gap-8">
-        <h2 className="text-muted-foreground shrink-0 text-center text-sm font-medium tracking-tight md:text-left">
-          A few of the brands we&rsquo;ve worked with
-        </h2>
-        <div className="grid min-h-10 w-full grid-cols-3 items-center justify-items-center gap-x-4 md:flex md:flex-1 md:justify-between">
-          <AnimatePresence mode="popLayout">
-            {visible.map((logo, index) => (
-              <motion.div
-                key={logo.title}
-                initial={{ opacity: 0, x: -20, filter: "blur(10px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, x: 20, filter: "blur(10px)" }}
-                transition={{ duration: 0.2, ease: "easeInOut", delay: index * 0.1 }}
-                className="flex w-full items-center justify-center"
-              >
-                <Image
-                  src={logo.src}
-                  alt={logo.title}
-                  className={cn(
-                    "w-auto max-w-[130px] object-contain",
-                    logo.opaque
-                      ? "h-7 rounded bg-white px-1.5 py-1 md:h-8"
-                      : "h-8 md:h-9",
-                    // Light marks are already white: blacken them on a light
-                    // ground, leave them alone on a dark one. Everything else
-                    // is flattened to black then inverted to clean white.
-                    !logo.opaque &&
-                      (logo.lightMark
-                        ? "brightness-0 dark:brightness-100"
-                        : "dark:brightness-0 dark:invert")
-                  )}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
+    <div className={cn("flex flex-col gap-4", className)}>
+      <p className="text-muted-foreground text-xs font-medium tracking-wide">
+        Brands we&rsquo;ve done this work for
+      </p>
+      <div className="flex min-h-9 items-center gap-6 md:gap-8">
+        <AnimatePresence mode="popLayout">
+          {visible.map((logo, index) => (
+            <motion.div
+              key={logo.title}
+              initial={{ opacity: 0, x: -14, filter: "blur(8px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, x: 14, filter: "blur(8px)" }}
+              transition={{
+                duration: FADE_S,
+                ease: "easeInOut",
+                delay: index * 0.12,
+              }}
+              className="flex items-center justify-center"
+            >
+              <Image
+                src={logo.src}
+                alt={logo.title}
+                className={cn(
+                  "w-auto object-contain",
+                  logo.opaque
+                    ? "h-6 max-w-[104px] rounded bg-white px-1.5 py-1"
+                    : "h-7 max-w-[112px]",
+                  // Light marks are already white: blacken them on a light
+                  // ground, leave them alone on a dark one. Everything else is
+                  // flattened to black then inverted to clean white.
+                  !logo.opaque &&
+                    (logo.lightMark
+                      ? "brightness-0 dark:brightness-100"
+                      : "dark:brightness-0 dark:invert")
+                )}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
-    </section>
+    </div>
   );
 }
