@@ -224,3 +224,50 @@ Two of the four cards can be finished today without opening Runway.
 - [ ] Card art matches the copy on the card
 - [ ] Hero browser window still interactive, not replaced
 - [ ] Page still under the 8-viewport budget (currently 7.1)
+
+---
+
+## 5. Base screenshots for the review slides
+
+The four images behind the annotation pins in the hero. They should be
+**storefront pages**, not pages of the audit document. Cards showing findings on
+top of a document that already lists findings reads as findings-on-findings, and
+the current stand-ins still carry "Marlow & Grove", the fictional brand.
+
+### What to capture
+
+| | |
+|---|---|
+| Target | A real Shopify storefront, de-branded (see below) |
+| Viewport | 1440 x 900, desktop, then scroll to the region the finding is about |
+| Export | 2080 x 1440 to match the current assets, PNG |
+| State | Cookie banners dismissed, nothing hovered, no modal open |
+| Mobile slide | Capture at 375 wide, then place on a neutral ground so it fills a landscape frame |
+
+Four files, one per tab:
+
+| Tab | Show | Findings pinned there |
+|---|---|---|
+| Homepage | Hero and primary nav | F.06 empty heading, F.07 missing alt text |
+| Product pages | Gallery, price, add-to-cart area | F.04 no sticky ATC, F.05 no shipping or returns copy |
+| Cart & checkout | Line items, subtotal, checkout buttons | F.01 silent ATC failure, F.02 no delivery estimate, F.03 accelerated checkout |
+| Mobile | Footer and primary nav at 375 | F.08 footer touch targets, F.09 16px nav |
+
+### De-branding
+
+Enough that nobody can identify the store, no more:
+
+- Blur or grey the wordmark and any logo
+- Replace product names with neutral text, or blur them
+- Remove any URL visible in a browser chrome capture
+- Leave layout, spacing and colour intact, since that is what makes it read as a
+  real storefront rather than a wireframe
+
+### After the swap
+
+Pin coordinates in `src/content/findings.ts` are percentages tuned to the
+current stand-ins. They will point at the wrong places on new screenshots and
+need retuning, which is quick once the images exist: each finding has a
+`pin: { x, y }` and the pins are visible as you adjust.
+
+Swapping is four import lines in `src/components/site/hero.tsx`.

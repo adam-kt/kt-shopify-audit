@@ -51,10 +51,13 @@ export function ReviewSlide({ surface, image, alt, priority }: ReviewSlideProps)
           sizes="(max-width: 768px) 100vw, 1200px"
           placeholder="blur"
           priority={priority}
-          className="object-cover object-top opacity-60"
+          // Held well back: these stand-ins are pages of the audit document, not
+          // storefronts, and still carry the fictional "Marlow & Grove" branding.
+          // See docs/hero-video-brief.md section 5 for the replacement spec.
+          className="object-cover object-top opacity-30 blur-[1px]"
         />
         {/* Darken so the cards and pins hold contrast over any screenshot. */}
-        <div aria-hidden className="from-background/80 absolute inset-0 bg-gradient-to-t to-transparent" />
+        <div aria-hidden className="from-background/90 via-background/50 absolute inset-0 bg-gradient-to-t to-transparent" />
 
         {findings.map((f, i) => {
           const sev = SEVERITY[f.severity];
