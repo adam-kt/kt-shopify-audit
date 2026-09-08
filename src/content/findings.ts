@@ -149,7 +149,7 @@ export const FINDINGS: Finding[] = [
     title: "Over 200 footer links below the touch minimum",
     impact:
       "Rows are 16px tall against a 44px minimum, and around thirty fall under even the 24px floor. Concentrated in the footer rather than spread across the site.",
-    pin: { x: "48%", y: "72%" },
+    pin: { x: "50%", y: "74%" },
   },
   {
     rank: "F.09",
@@ -159,7 +159,7 @@ export const FINDINGS: Finding[] = [
     title: "Primary navigation is 16px tall",
     impact:
       "The top-level category links are a third of the recommended touch height, so mis-taps land on the neighbouring item.",
-    pin: { x: "36%", y: "22%" },
+    pin: { x: "46%", y: "20%" },
   },
 ];
 

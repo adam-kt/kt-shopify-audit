@@ -53,9 +53,15 @@ export function ReviewSlide({ surface, image, alt, priority }: ReviewSlideProps)
           sizes="(max-width: 768px) 100vw, 1200px"
           placeholder="blur"
           priority={priority}
-          // Legible enough to read as a real shop, held back enough that the
-          // finding cards stay the thing you look at.
-          className="object-cover object-top opacity-55"
+          // The mobile capture is a portrait viewport. Filling a landscape panel
+          // with it scales it up and shows only the top fifth, so it fits
+          // instead: the whole phone-width page, centred, reading as a phone.
+          className={cn(
+            "opacity-55",
+            surface === "mobile"
+              ? "object-contain object-center p-4"
+              : "object-cover object-top"
+          )}
         />
         {/* Darken so the cards and pins hold contrast over any screenshot. */}
         <div aria-hidden className="from-background/85 via-background/40 absolute inset-0 bg-gradient-to-t to-transparent" />
