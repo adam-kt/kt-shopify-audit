@@ -1,242 +1,185 @@
 "use client";
-import { IconMenu2, IconX } from "@tabler/icons-react";
-import { motion, AnimatePresence } from "motion/react";
+
+/**
+ * Adapted from the Aceternity `hero-section-with-images-grid-and-navbar` block.
+ *
+ * Kept: the centred headline stack, the marquee logo cloud and the staggered
+ * images grid.
+ *
+ * Removed:
+ *  - `Navbar` / `DesktopNav` / `MobileNav` / `Logo` — the site navbar now lives in
+ *    `simple-navbar-with-hover-effects.tsx`. Keeping both would ship two navs.
+ *  - `FeaturedImages` — six Unsplash portraits of real people rendered as an
+ *    avatar cluster, i.e. fabricated social proof.
+ *  - All 19 remote images (`assets.aceternity.com`, `images.unsplash.com`),
+ *    including a "Trusted by famous brands" marquee of Aceternity's own logos.
+ *
+ * Every asset here is local and every claim is the site's own. See
+ * docs/aceternity-migration.md §B2. Diff against aafff94 for the upstream delta.
+ */
+
+import React, { useEffect, useState } from "react";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import Marquee from "react-fast-marquee";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type NavItem = { name: string; link: string };
+import brightwood from "@/logos/brightwood.svg";
+import al from "@/logos/al.png";
+import jh from "@/logos/jh.png";
+import omura from "@/logos/omura.png";
+import rAndR from "@/logos/r-and-r.png";
+import tache from "@/logos/tache.webp";
+import madrinas from "@/logos/madrinas.svg";
+import barbaraKatz from "@/logos/barbara-katz.webp";
+import chused from "@/logos/chused.webp";
 
-export default function HeroSectionWithImagesGrid() {
+import shot1 from "@/images/macbook-3.png";
+import shot2 from "@/images/iphone-4.png";
+import shot3 from "@/images/macbook-4.png";
+import shot4 from "@/images/iphone-5.png";
+import shot5 from "@/images/macbook-5.png";
+
+/** Rotating second line of the H1. */
+const HEADLINE_VARIANTS = [
+  "that pays for itself",
+  "that finds hidden revenue",
+  "your competitors wish they had",
+  "ranked by ROI",
+];
+
+export function SiteHero() {
   return (
-    <div className="relative w-full overflow-hidden bg-gray-50 dark:bg-neutral-950">
-      <Navbar />
-      <div className="relative flex flex-col items-center justify-center overflow-hidden px-8 pb-4 md:px-8">
-        <div className="relative mt-20 flex flex-col items-center justify-center">
-          <FeaturedImages />
-          <h1 className="mb-8relative mx-auto mt-4 max-w-6xl text-center text-3xl font-bold tracking-tight text-zinc-700 md:text-4xl lg:text-7xl dark:text-white">
-            Your best in class{" "}
-            <span className="relative z-10 bg-gradient-to-b from-indigo-700 to-indigo-600 bg-clip-text text-transparent">
-              design and development studio
-            </span>{" "}
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="inline-block h-14 w-14 stroke-indigo-500 stroke-[1px]"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <motion.path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <motion.path
-                  initial={{ pathLength: 0, fill: "#a5b4fc", opacity: 0 }}
-                  animate={{ pathLength: 1, fill: "#a5b4fc", opacity: 1 }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "linear",
-                    repeatDelay: 0.5,
-                  }}
-                  d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"
-                />
-              </svg>
+    <section className="relative w-full overflow-hidden">
+      <div className="relative flex flex-col items-center justify-center px-6 pb-4 sm:px-10">
+        <div className="relative mt-32 flex flex-col items-center justify-center sm:mt-40">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[var(--color-sky)] px-5 py-2 text-[14px] font-semibold text-ink-950">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-coral-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-coral-600" />
             </span>
+            3 audit slots open this month
+          </span>
+
+          <h1 className="text-mega relative mx-auto mt-8 w-full max-w-6xl text-center sm:mt-10">
+            <span className="block">The Shopify audit</span>
+            <RotatingHeadline />
           </h1>
-          <h2 className="font-regular relative mx-auto mt-8 mb-8 max-w-xl text-center text-base tracking-wide text-zinc-500 antialiased md:text-xl dark:text-zinc-200">
-            We provide the best in class design and development services for
-            teams that ship with the speed of light.
-          </h2>
+
+          <p className="relative mx-auto mt-6 max-w-xl text-center text-[15px] font-medium leading-relaxed text-ink-800 sm:mt-8 sm:text-[17px]">
+            A conversion review of your Shopify storefront, verified against your
+            live store data. Prioritized findings, annotated screenshots, and a
+            30-day rescan &mdash; delivered in 5 business days.
+          </p>
         </div>
-        <div className="group relative z-10 mb-10">
-          <button className="rounded-lg bg-black px-8 py-2 font-medium text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset] dark:bg-white dark:text-black">
-            Book a call
-          </button>
+
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+          <Link
+            href="#pricing"
+            className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-8 py-3.5 text-[15px] font-semibold text-ink-950 shadow-soft transition-colors hover:bg-brand-600"
+          >
+            Get my audit &mdash; $750
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="#what-you-get"
+            className="inline-flex items-center rounded-full border-2 border-ink-900 bg-transparent px-7 py-3 text-[14px] font-semibold text-ink-900 transition-colors hover:bg-ink-900 hover:text-white"
+          >
+            See what&rsquo;s included
+          </Link>
         </div>
+
+        <p className="mt-5 text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-600">
+          Delivered in 5 business days &middot; Every claim verified &middot; Free
+          30-day rescan
+        </p>
+
         <LogoCloudMarquee />
       </div>
+
       <ImagesGrid />
-    </div>
+    </section>
   );
 }
 
-export const ImagesGrid = () => {
-  const images = [
-    {
-      src: "https://assets.aceternity.com/pro/hero-example-3.jpg",
-      className: "translate-y-10",
-    },
-    {
-      src: "https://assets.aceternity.com/pro/hero-example-1.jpg",
-      className: "translate-y-20",
-    },
+const RotatingHeadline = () => {
+  const [index, setIndex] = useState(0);
+  const reduceMotion = useReducedMotion();
 
-    {
-      src: "https://assets.aceternity.com/pro/hero-example-2.jpg",
-      className: "translate-y-4",
-    },
-    {
-      src: "https://assets.aceternity.com/pro/hero-example-4.jpg",
-      className: "translate-y-10",
-    },
-    {
-      src: "https://assets.aceternity.com/pro/hero-example-5.jpg",
-      className: "translate-y-20",
-    },
-  ];
+  useEffect(() => {
+    if (reduceMotion) return;
+    const id = setInterval(
+      () => setIndex((v) => (v + 1) % HEADLINE_VARIANTS.length),
+      2800
+    );
+    return () => clearInterval(id);
+  }, [reduceMotion]);
+
+  // Reduced motion: render the first phrase statically rather than cycling.
+  if (reduceMotion) {
+    return <span className="mt-1 block">{HEADLINE_VARIANTS[0]}</span>;
+  }
+
   return (
-    <div className="relative mt-10 h-[20rem] w-full overflow-hidden border-b border-neutral-200 md:h-[30rem] dark:border-neutral-800">
-      <div className="absolute inset-0 flex h-full w-full flex-shrink-0 justify-center gap-5">
-        {images.map((image) => (
-          <div
-            className={cn(
-              "relative mt-0 rounded-lg border border-neutral-200 bg-gray-100 p-2 dark:border-neutral-900 dark:bg-neutral-800",
-              image.className,
-            )}
-            key={image.src}
-          >
-            <img
-              src={image.src}
-              alt={image.src}
-              width="500"
-              height="500"
-              className="h-full min-w-[15rem] flex-shrink-0 rounded-lg object-cover object-top"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
+    <span className="mt-1 block overflow-hidden">
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={index}
+          initial={{ y: "0.6em", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: "-0.6em", opacity: 0 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="inline-block"
+        >
+          {HEADLINE_VARIANTS[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
   );
 };
 
-export const FeaturedImages = ({
-  className,
-  containerClassName,
-}: {
-  textClassName?: string;
-  className?: string;
-  showStars?: boolean;
-  containerClassName?: string;
-}) => {
-  const images = [
-    {
-      name: "John Doe",
-      src: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
-    },
-    {
-      name: "Robert Johnson",
-      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      name: "Jane Smith",
-      src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      name: "Emily Davis",
-      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      name: "Tyler Durden",
-      src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
-    },
-    {
-      name: "Dora",
-      src: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
-    },
-  ];
-  return (
-    <div className={cn("flex flex-col items-center", containerClassName)}>
-      <div
-        className={cn(
-          "mb-2 flex flex-col items-center justify-center sm:flex-row",
-          className,
-        )}
-      >
-        <div className="mb-4 flex flex-row items-center sm:mb-0">
-          {images.map((image, idx) => (
-            <div className="group relative -mr-4" key={image.name}>
-              <div>
-                <motion.div
-                  whileHover={{ scale: 1.05, zIndex: 30 }}
-                  transition={{ duration: 0.2 }}
-                  className="relative overflow-hidden rounded-full border-2 border-neutral-200"
-                >
-                  <img
-                    height={100}
-                    width={100}
-                    src={image.src}
-                    alt={image.name}
-                    className="h-8 w-8 object-cover object-top md:h-14 md:w-14"
-                  />
-                </motion.div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+interface LogoItem {
+  src: StaticImageData;
+  alt: string;
+  /** White-on-transparent marks need inverting to read on the light ground. */
+  invert?: boolean;
+}
+
+const logos: LogoItem[] = [
+  { src: brightwood, alt: "Brightwood" },
+  { src: al, alt: "Alexis Lauren" },
+  { src: jh, alt: "Jack Henry" },
+  { src: omura, alt: "Omura" },
+  { src: rAndR, alt: "R&R" },
+  { src: tache, alt: "Táche" },
+  { src: madrinas, alt: "Madrinas" },
+  { src: barbaraKatz, alt: "Barbara Katz", invert: true },
+  { src: chused, alt: "Chused & Co", invert: true },
+];
 
 export function LogoCloudMarquee() {
-  const logos = [
-    {
-      name: "Aceternity UI",
-      src: "https://assets.aceternity.com/pro/logos/aceternity-ui.png",
-    },
-    {
-      name: "Gamity",
-      src: "https://assets.aceternity.com/pro/logos/gamity.png",
-    },
-    {
-      name: "Host it",
-      src: "https://assets.aceternity.com/pro/logos/hostit.png",
-    },
-    {
-      name: "Asteroid Kit",
-      src: "https://assets.aceternity.com/pro/logos/asteroid-kit.png",
-    },
-    {
-      name: "Aceternity UI 2",
-      src: "https://assets.aceternity.com/pro/logos/aceternity-ui.png",
-    },
-    {
-      name: "Gamity 2",
-      src: "https://assets.aceternity.com/pro/logos/gamity.png",
-    },
-    {
-      name: "Host it 2",
-      src: "https://assets.aceternity.com/pro/logos/hostit.png",
-    },
-    {
-      name: "Asteroid Kit 2",
-      src: "https://assets.aceternity.com/pro/logos/asteroid-kit.png",
-    },
-  ];
-
   return (
-    <div className="relative">
-      <p className="mt-4 text-center font-sans text-base text-neutral-700 dark:text-neutral-300">
-        Trusted by famous brands
+    <div className="relative mt-14 w-full sm:mt-20">
+      <p className="mb-6 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-ink-600">
+        A few of the brands we&rsquo;ve worked with
       </p>
 
-      <div className="relative mx-auto mt-4 flex h-20 w-full max-w-4xl flex-wrap justify-center gap-10 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] md:mt-2 md:gap-40">
-        <Marquee pauseOnHover direction="left" speed={30}>
-          {logos.map((logo, idx) => (
-            <img
-              key={logo.name + "second"}
-              src={logo.src}
-              alt={logo.name}
-              width="100"
-              height="100"
-              className="mx-0 w-32 object-contain filter md:mx-10 md:w-40 dark:invert"
-            />
+      <div className="relative mx-auto flex w-full max-w-5xl justify-center [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+        <Marquee pauseOnHover direction="left" speed={30} autoFill>
+          {logos.map((logo) => (
+            <div
+              key={logo.alt}
+              className="mx-3 flex h-14 flex-shrink-0 items-center justify-center rounded-full border border-ink-100 bg-white/70 px-7"
+            >
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                className="h-7 w-auto max-w-[140px] object-contain"
+                style={{ filter: logo.invert ? "invert(1)" : undefined }}
+              />
+            </div>
           ))}
         </Marquee>
       </div>
@@ -244,86 +187,39 @@ export function LogoCloudMarquee() {
   );
 }
 
-const Navbar = () => {
-  const navItems = [
-    { name: "Work", link: "#" },
-    { name: "Services", link: "#" },
-    { name: "Pricing", link: "#" },
-    { name: "Contact", link: "#" },
-  ];
-  return (
-    <div className="relative z-[60] mx-auto flex w-full max-w-7xl flex-row items-center justify-between px-8 py-8">
-      <Logo />
-      <div className="hidden flex-1 flex-row items-center justify-center space-x-8 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-14">
-        <DesktopNav navItems={navItems} />
-      </div>
-      <button className="hidden rounded-lg bg-black px-8 py-2 font-medium text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset] md:block dark:bg-white dark:text-black">
-        Book a call
-      </button>
+const gridImages: { src: StaticImageData; alt: string; className: string }[] = [
+  { src: shot1, alt: "Storefront review on desktop", className: "translate-y-10" },
+  { src: shot2, alt: "Annotated mobile findings", className: "translate-y-20" },
+  { src: shot3, alt: "Prioritized action plan", className: "translate-y-4" },
+  { src: shot4, alt: "Mobile funnel review", className: "translate-y-10" },
+  { src: shot5, alt: "Findings register", className: "translate-y-20" },
+];
 
-      <div className="flex lg:hidden">
-        <MobileNav navItems={navItems} />
+export const ImagesGrid = () => {
+  return (
+    <div className="relative mt-10 h-[20rem] w-full overflow-hidden border-b border-ink-100 md:h-[30rem]">
+      <div className="absolute inset-0 flex h-full w-full flex-shrink-0 justify-center gap-5">
+        {gridImages.map((image) => (
+          <div
+            key={image.alt}
+            className={cn(
+              "relative mt-0 rounded-2xl border border-ink-100 bg-white p-2 shadow-soft",
+              image.className
+            )}
+          >
+            <div className="relative h-full w-[15rem] overflow-hidden rounded-xl">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="240px"
+                placeholder="blur"
+                className="object-cover object-top"
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-  );
-};
-
-const DesktopNav = ({ navItems }: { navItems: NavItem[] }) => {
-  return (
-    <>
-      {navItems.map((navItem: NavItem, idx: number) => (
-        <Link
-          className="text-neutral-600 dark:text-neutral-300"
-          key={`link=${idx}`}
-          href={navItem.link}
-        >
-          <span>{navItem.name}</span>
-        </Link>
-      ))}
-    </>
-  );
-};
-
-const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <IconMenu2 onClick={() => setOpen(!open)} />
-      <AnimatePresence>
-        {open && (
-          <motion.div className="fixed inset-0 z-50 flex flex-col items-center justify-center space-y-10 bg-white text-xl font-bold text-zinc-600 transition duration-200 hover:text-zinc-800">
-            <IconX
-              className="absolute top-8 right-8 h-5 w-5"
-              onClick={() => setOpen(!open)}
-            />
-            {navItems.map((navItem: NavItem, idx: number) => (
-              <Link
-                key={`link=${idx}`}
-                href={navItem.link}
-                className="relative text-neutral-600 dark:text-neutral-300"
-              >
-                <motion.span className="block">{navItem.name} </motion.span>
-              </Link>
-            ))}
-            <button className="rounded-lg bg-black px-8 py-2 font-medium text-white shadow-[0px_-2px_0px_0px_rgba(255,255,255,0.4)_inset] dark:bg-white dark:text-black">
-              Book a call
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
-};
-
-const Logo = () => {
-  return (
-    <Link
-      href="/"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
-    >
-      <div className="h-5 w-6 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-black dark:bg-white" />
-      <span className="font-medium text-black dark:text-white">DevStudio</span>
-    </Link>
   );
 };

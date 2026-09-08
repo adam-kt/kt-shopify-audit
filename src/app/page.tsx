@@ -1,5 +1,5 @@
-import { ThanksHeader } from "@/components/thanks/header";
-import { ThanksHero } from "@/components/thanks/hero";
+import { SiteNavbar } from "@/block/simple-navbar-with-hover-effects";
+import { SiteHero } from "@/block/hero-section-with-images-grid-and-navbar";
 import { AuditDeliverablePreview } from "@/components/thanks/audit-deliverable-preview";
 import { IntroText } from "@/components/thanks/intro-text";
 import { SuperHeadline } from "@/components/thanks/super-headline";
@@ -34,10 +34,10 @@ import reviewMobile from "@/images/review/mobile-thumb.png";
 export default function HomePage() {
   return (
     <>
-      <ThanksHeader />
+      <SiteNavbar />
 
       <main>
-        <ThanksHero />
+        <SiteHero />
 
         <AuditDeliverablePreview />
 
