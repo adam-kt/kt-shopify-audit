@@ -44,7 +44,7 @@ const DesktopNav = ({ navItems }: { navItems: NavItem[] }) => {
       onMouseLeave={() => setHovered(null)}
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-[1600px] flex-row items-center justify-between",
-        "rounded-full border border-ink-100 bg-white/80 px-3 py-2 shadow-soft backdrop-blur-md lg:flex"
+        "rounded-full border border-neutral-100 bg-white/80 px-3 py-2 shadow-soft backdrop-blur-md lg:flex"
       )}
     >
       <Link href="/" aria-label="Knock Twice — home" className="relative z-20">
@@ -58,12 +58,12 @@ const DesktopNav = ({ navItems }: { navItems: NavItem[] }) => {
             href={navItem.link}
             onMouseEnter={() => setHovered(idx)}
             onFocus={() => setHovered(idx)}
-            className="relative rounded-full px-4 py-2 text-ink-900 transition-colors"
+            className="relative rounded-full px-4 py-2 text-neutral-900 transition-colors"
           >
             {hovered === idx && (
               <motion.span
                 layoutId="nav-hovered"
-                className="absolute inset-0 h-full w-full rounded-full bg-ink-100"
+                className="absolute inset-0 h-full w-full rounded-full bg-neutral-100"
               />
             )}
             <span className="relative z-20">{navItem.name}</span>
@@ -73,7 +73,7 @@ const DesktopNav = ({ navItems }: { navItems: NavItem[] }) => {
 
       <Link
         href="/#pricing"
-        className="rounded-full bg-ink-950 px-7 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-ink-800"
+        className="rounded-full bg-neutral-950 px-7 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-neutral-800"
       >
         Get my audit
       </Link>
@@ -88,7 +88,7 @@ const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
     <motion.nav
       aria-label="Main navigation"
       animate={{ borderRadius: open ? "1.5rem" : "2rem" }}
-      className="relative mx-auto flex w-full flex-col items-center justify-between border border-ink-100 bg-white/80 px-3 py-2 shadow-soft backdrop-blur-md lg:hidden"
+      className="relative mx-auto flex w-full flex-col items-center justify-between border border-neutral-100 bg-white/80 px-3 py-2 shadow-soft backdrop-blur-md lg:hidden"
     >
       <div className="flex w-full flex-row items-center justify-between">
         <Link href="/" aria-label="Knock Twice — home">
@@ -101,7 +101,7 @@ const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-900 transition-colors hover:bg-ink-100"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-neutral-900 transition-colors hover:bg-neutral-100"
         >
           {open ? <IconX className="h-5 w-5" /> : <IconMenu2 className="h-5 w-5" />}
         </button>
@@ -114,14 +114,14 @@ const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="absolute inset-x-0 top-[calc(100%+0.5rem)] z-20 flex w-full flex-col items-stretch gap-1 rounded-[var(--radius-card)] border border-ink-100 bg-white p-4 shadow-soft-lg"
+            className="absolute inset-x-0 top-[calc(100%+0.5rem)] z-20 flex w-full flex-col items-stretch gap-1 rounded-[var(--radius-card)] border border-neutral-100 bg-white p-4 shadow-soft-lg"
           >
             {navItems.map((navItem) => (
               <Link
                 key={navItem.link}
                 href={navItem.link}
                 onClick={() => setOpen(false)}
-                className="rounded-full px-4 py-3 text-[15px] font-semibold text-ink-900 transition-colors hover:bg-ink-100"
+                className="rounded-full px-4 py-3 text-[15px] font-semibold text-neutral-900 transition-colors hover:bg-neutral-100"
               >
                 {navItem.name}
               </Link>
@@ -129,7 +129,7 @@ const MobileNav = ({ navItems }: { navItems: NavItem[] }) => {
             <Link
               href="/#pricing"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-ink-950 px-6 py-3 text-center text-[15px] font-semibold text-white transition-colors hover:bg-ink-800"
+              className="mt-2 rounded-full bg-neutral-950 px-6 py-3 text-center text-[15px] font-semibold text-white transition-colors hover:bg-neutral-800"
             >
               Get my audit
             </Link>

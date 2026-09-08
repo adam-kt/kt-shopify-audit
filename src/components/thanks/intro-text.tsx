@@ -7,8 +7,8 @@ interface IntroTextProps {
 }
 
 /**
- * Centered, thanks.co-style intro text. Each word starts dim (ink-300) and
- * fills in to solid ink-950 as the section scrolls through the viewport.
+ * Centered, thanks.co-style intro text. Each word starts dim (neutral-300) and
+ * fills in to solid neutral-950 as the section scrolls through the viewport.
  * The fill is a GSAP ScrollTrigger scrub so it tracks the scroll position 1:1.
  */
 export function IntroText({ children }: IntroTextProps) {

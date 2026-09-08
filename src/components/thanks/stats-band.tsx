@@ -144,8 +144,8 @@ export function StatsBand({ eyebrow, headline, subhead, stats }: StatsBandProps)
           ref={headlineRef}
           className="mx-auto max-w-[15ch] text-[clamp(2.5rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]"
           style={{
-            color: "var(--color-ink-950)",
-            fontFamily: "var(--font-zagma), serif",
+            color: "var(--color-neutral-950)",
+            fontFamily: "var(--font-display)",
             fontWeight: 700,
           }}
         >
@@ -157,7 +157,7 @@ export function StatsBand({ eyebrow, headline, subhead, stats }: StatsBandProps)
         </h2>
 
         {subhead && (
-          <p className="mt-6 mx-auto max-w-xl text-[15px] sm:text-base font-semibold text-ink-800 leading-relaxed">
+          <p className="mt-6 mx-auto max-w-xl text-[15px] sm:text-base font-semibold text-neutral-800 leading-relaxed">
             {subhead}
           </p>
         )}
@@ -170,7 +170,7 @@ export function StatsBand({ eyebrow, headline, subhead, stats }: StatsBandProps)
             <div
               key={i}
               data-stat-card
-              className="rounded-[var(--radius-card)] bg-brand-500 p-4 sm:p-5 aspect-[3/4] flex flex-col items-center justify-center shadow-soft"
+              className="rounded-[var(--radius-card)] bg-indigo-600 p-4 sm:p-5 aspect-[3/4] flex flex-col items-center justify-center shadow-soft"
             >
               <div
                 className="text-[clamp(1.75rem,3vw,2.75rem)] font-extrabold tracking-[-0.035em] leading-none text-white"

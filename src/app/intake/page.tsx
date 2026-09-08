@@ -113,22 +113,22 @@ function IntakeForm() {
     return (
       <div
         ref={successRef}
-        className="rounded-[var(--radius-card-lg)] border border-ink-100 bg-white p-8 sm:p-12 text-center shadow-soft"
+        className="rounded-[var(--radius-card-lg)] border border-neutral-100 bg-white p-8 sm:p-12 text-center shadow-soft"
       >
-        <div className="mx-auto mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-mint-soft)]">
+        <div className="mx-auto mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-neutral-50)]">
           <CheckCircle className="h-7 w-7 text-emerald-700" />
         </div>
-        <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold tracking-[-0.015em] text-ink-950">
+        <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold tracking-[-0.015em] text-neutral-950">
           Got it — we&rsquo;re on it.
         </h2>
-        <p className="mt-4 text-[15px] text-ink-600 max-w-md mx-auto leading-relaxed">
+        <p className="mt-4 text-[15px] text-neutral-600 max-w-md mx-auto leading-relaxed">
           Thanks for the detail. Our team is reviewing your store now and
           you&rsquo;ll hear from us within 5 business days with your full
           audit.
         </p>
         <Link
           href="/"
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-coral-600 hover:text-coral-700 transition-colors"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-rose-600 hover:text-rose-700 transition-colors"
         >
           Back to Knock Twice
           <ArrowRight className="h-3.5 w-3.5" />
@@ -140,7 +140,7 @@ function IntakeForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-[var(--radius-card-lg)] border border-ink-100 bg-white p-6 sm:p-10 shadow-soft space-y-10"
+      className="rounded-[var(--radius-card-lg)] border border-neutral-100 bg-white p-6 sm:p-10 shadow-soft space-y-10"
     >
       <Section title="Who's this for?">
         <Field
@@ -246,7 +246,7 @@ function IntakeForm() {
       </Section>
 
       {error && (
-        <p className="text-sm font-semibold text-coral-700" role="alert">
+        <p className="text-sm font-semibold text-rose-700" role="alert">
           {error}
         </p>
       )}
@@ -254,7 +254,7 @@ function IntakeForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink-950 text-white px-8 py-4 text-[15px] font-semibold hover:bg-ink-800 transition-colors shadow-soft disabled:opacity-50 cursor-pointer"
+        className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-neutral-950 text-white px-8 py-4 text-[15px] font-semibold hover:bg-neutral-800 transition-colors shadow-soft disabled:opacity-50 cursor-pointer"
       >
         {loading ? (
           <>
@@ -269,7 +269,7 @@ function IntakeForm() {
         )}
       </button>
 
-      <p className="text-center text-[11px] text-ink-500 tracking-[0.1em] uppercase font-semibold">
+      <p className="text-center text-[11px] text-neutral-500 tracking-[0.1em] uppercase font-semibold">
         You&rsquo;ll hear back within 5 business days
       </p>
     </form>
@@ -281,7 +281,7 @@ function IntakeForm() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="space-y-4">
-      <h3 className="text-caption text-ink-700">{title}</h3>
+      <h3 className="text-caption text-neutral-700">{title}</h3>
       <div className="space-y-4">{children}</div>
     </section>
   );
@@ -294,14 +294,14 @@ function Field({
 }: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
   return (
     <label className="block">
-      <span className="block text-[13px] font-semibold text-ink-800 mb-1.5">
+      <span className="block text-[13px] font-semibold text-neutral-800 mb-1.5">
         {label}
-        {required && <span className="text-coral-600"> *</span>}
+        {required && <span className="text-rose-600"> *</span>}
       </span>
       <input
         required={required}
         {...rest}
-        className="w-full rounded-full border border-ink-200 bg-white px-5 py-3 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100 transition-all"
+        className="w-full rounded-full border border-neutral-200 bg-white px-5 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-100 transition-all"
       />
     </label>
   );
@@ -322,15 +322,15 @@ function Select({
 }) {
   return (
     <label className="block">
-      <span className="block text-[13px] font-semibold text-ink-800 mb-1.5">
+      <span className="block text-[13px] font-semibold text-neutral-800 mb-1.5">
         {label}
-        {required && <span className="text-coral-600"> *</span>}
+        {required && <span className="text-rose-600"> *</span>}
       </span>
       <select
         required={required}
         value={value}
         onChange={onChange}
-        className="w-full rounded-full border border-ink-200 bg-white px-5 py-3 text-sm text-ink-900 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100 transition-all appearance-none cursor-pointer"
+        className="w-full rounded-full border border-neutral-200 bg-white px-5 py-3 text-sm text-neutral-900 focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-100 transition-all appearance-none cursor-pointer"
       >
         <option value="">Select…</option>
         {options.map((o) => (
@@ -350,15 +350,15 @@ function TextArea({
 }: React.TextareaHTMLAttributes<HTMLTextAreaElement> & { label: string }) {
   return (
     <label className="block">
-      <span className="block text-[13px] font-semibold text-ink-800 mb-1.5">
+      <span className="block text-[13px] font-semibold text-neutral-800 mb-1.5">
         {label}
-        {required && <span className="text-coral-600"> *</span>}
+        {required && <span className="text-rose-600"> *</span>}
       </span>
       <textarea
         required={required}
         rows={4}
         {...rest}
-        className="w-full rounded-2xl border border-ink-200 bg-white px-5 py-3 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100 transition-all resize-y min-h-[96px]"
+        className="w-full rounded-2xl border border-neutral-200 bg-white px-5 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-100 transition-all resize-y min-h-[96px]"
       />
     </label>
   );
@@ -368,14 +368,14 @@ export default function IntakePage() {
   return (
     <>
       <ThanksHeader />
-      <main className="min-h-screen bg-[var(--color-cream)] pt-36 pb-20 sm:pt-44 sm:pb-28">
+      <main className="min-h-screen bg-[var(--background)] pt-36 pb-20 sm:pt-44 sm:pb-28">
         <div className="mx-auto max-w-2xl px-6 sm:px-10">
         <div className="mb-10 text-center">
-          <p className="text-caption mb-3 text-coral-700">Intake form</p>
-          <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold tracking-[-0.02em] leading-[1.05] text-ink-950">
+          <p className="text-caption mb-3 text-rose-700">Intake form</p>
+          <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold tracking-[-0.02em] leading-[1.05] text-neutral-950">
             Tell us about your store.
           </h1>
-          <p className="mt-4 text-[15px] text-ink-600 leading-relaxed max-w-lg mx-auto">
+          <p className="mt-4 text-[15px] text-neutral-600 leading-relaxed max-w-lg mx-auto">
             The more we know up front, the sharper the audit gets. Takes
             about five minutes — everything here lands straight in the
             reviewer&rsquo;s brief.
@@ -389,7 +389,7 @@ export default function IntakePage() {
         <p className="mt-8 text-center">
           <Link
             href="/"
-            className="text-sm text-ink-500 hover:text-ink-900 transition-colors font-medium"
+            className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors font-medium"
           >
             &larr; Back to Knock Twice
           </Link>

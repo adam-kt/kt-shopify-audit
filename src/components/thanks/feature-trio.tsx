@@ -31,15 +31,15 @@ export function FeatureTrio({ items }: FeatureTrioProps) {
             <div
               key={i}
               data-trio-item
-              className="rounded-[var(--radius-card)] bg-[var(--color-tan-soft)] p-8 sm:p-10 min-h-[280px] flex flex-col"
+              className="rounded-[var(--radius-card)] bg-[var(--color-neutral-50)] p-8 sm:p-10 min-h-[280px] flex flex-col"
             >
               <Sticker size="lg" tilt={i % 2 === 0 ? -6 : 8} className="mb-6">
                 {f.sticker}
               </Sticker>
-              <h3 className="text-[20px] font-extrabold tracking-tight text-ink-950">
+              <h3 className="text-[20px] font-extrabold tracking-tight text-neutral-950">
                 {f.title}
               </h3>
-              <p className="mt-3 text-[14px] font-medium text-ink-700 leading-relaxed max-w-[28ch]">
+              <p className="mt-3 text-[14px] font-medium text-neutral-700 leading-relaxed max-w-[28ch]">
                 {f.body}
               </p>
             </div>

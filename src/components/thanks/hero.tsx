@@ -168,11 +168,11 @@ export function ThanksHero() {
       <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-14 flex flex-col items-center">
         <span
           ref={pillRef}
-          className="inline-flex items-center gap-2 rounded-full bg-[var(--color-sky)] px-5 py-2 text-[14px] font-semibold text-ink-950"
+          className="inline-flex items-center gap-2 rounded-full bg-[var(--color-neutral-100)] px-5 py-2 text-[14px] font-semibold text-neutral-950"
         >
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-coral-500 opacity-75 animate-ping" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-coral-600" />
+            <span className="absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75 animate-ping" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-rose-600" />
           </span>
           3 audit slots open this month
         </span>
@@ -180,7 +180,7 @@ export function ThanksHero() {
         <h1
           ref={h1Ref}
           className="relative text-mega mt-8 sm:mt-10 text-center w-full"
-          style={{ color: "var(--color-ink-950)" }}
+          style={{ color: "var(--color-neutral-950)" }}
         >
           <span className="block">The Shopify audit</span>
           <span className="block mt-1">
@@ -200,7 +200,7 @@ export function ThanksHero() {
 
         <p
           ref={subheadRef}
-          className="mt-6 sm:mt-8 max-w-xl text-center text-[15px] sm:text-[17px] font-medium text-ink-800 leading-relaxed"
+          className="mt-6 sm:mt-8 max-w-xl text-center text-[15px] sm:text-[17px] font-medium text-neutral-800 leading-relaxed"
         >
           A conversion review of your Shopify storefront, verified against your
           live store data. Prioritized findings, annotated screenshots, and a
@@ -211,7 +211,7 @@ export function ThanksHero() {
           <a
             ref={ctaRef}
             href="#pricing"
-            className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-8 py-3.5 text-[15px] font-semibold text-ink-950 hover:bg-brand-600 transition-colors shadow-soft"
+            className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-3.5 text-[15px] font-semibold text-white hover:bg-indigo-700 transition-colors shadow-soft"
           >
             Get my audit — $750
             <ArrowRight className="h-4 w-4" />
@@ -219,19 +219,19 @@ export function ThanksHero() {
           <a
             ref={ghostRef}
             href="#what-you-get"
-            className="inline-flex items-center rounded-full border-2 border-ink-900 bg-transparent px-7 py-3 text-[14px] font-semibold text-ink-900 hover:bg-ink-900 hover:text-white transition-colors"
+            className="inline-flex items-center rounded-full border-2 border-neutral-900 bg-transparent px-7 py-3 text-[14px] font-semibold text-neutral-900 hover:bg-neutral-900 hover:text-white transition-colors"
           >
             See what&rsquo;s included
           </a>
         </div>
 
-        <p className="mt-5 text-[12px] font-semibold text-ink-600 uppercase tracking-[0.12em]">
+        <p className="mt-5 text-[12px] font-semibold text-neutral-600 uppercase tracking-[0.12em]">
           Delivered in 5 business days · Every claim verified · Free 30-day rescan
         </p>
       </div>
 
       <div className="mt-14 sm:mt-20">
-        <p className="text-center text-[11px] font-bold text-ink-600 uppercase tracking-[0.16em] mb-6">
+        <p className="text-center text-[11px] font-bold text-neutral-600 uppercase tracking-[0.16em] mb-6">
           A few of the brands we&rsquo;ve worked with
         </p>
         <div className="overflow-hidden py-4">
@@ -244,7 +244,7 @@ export function ThanksHero() {
               .map((logo, i) => (
                 <div
                   key={`${logo.alt}-${i}`}
-                  className="logo-pill flex-shrink-0 h-14 px-7 rounded-full flex items-center justify-center bg-white/70 border border-ink-100 cursor-pointer"
+                  className="logo-pill flex-shrink-0 h-14 px-7 rounded-full flex items-center justify-center bg-white/70 border border-neutral-100 cursor-pointer"
                   aria-hidden
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}

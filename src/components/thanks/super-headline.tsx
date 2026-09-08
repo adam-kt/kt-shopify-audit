@@ -76,11 +76,11 @@ export function SuperHeadline({
         className
       )}
     >
-      {eyebrow && <p className="text-caption mb-5 text-ink-600">{eyebrow}</p>}
+      {eyebrow && <p className="text-caption mb-5 text-neutral-600">{eyebrow}</p>}
       <h2
         ref={h2Ref}
         className={`text-mega mx-auto ${align === "center" ? "max-w-[16ch]" : ""}`}
-        style={{ color: "var(--color-ink-950)" }}
+        style={{ color: "var(--color-neutral-950)" }}
       >
         {renderContent()}
       </h2>

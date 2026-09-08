@@ -24,10 +24,10 @@ export function Testimonial({ quote, name, role }: TestimonialProps) {
       <div className="mx-auto max-w-[1100px] px-6 sm:px-10 lg:px-14">
         <div
           ref={cardRef}
-          className="relative grid md:grid-cols-[1fr_1.3fr] gap-0 rounded-[var(--radius-card-lg)] bg-[var(--color-tan-soft)] overflow-hidden shadow-soft"
+          className="relative grid md:grid-cols-[1fr_1.3fr] gap-0 rounded-[var(--radius-card-lg)] bg-[var(--color-neutral-50)] overflow-hidden shadow-soft"
           style={{ rotate: "-2deg" }}
         >
-          <div className="relative aspect-[3/4] md:aspect-auto bg-[var(--color-peach)] overflow-hidden">
+          <div className="relative aspect-[3/4] md:aspect-auto bg-[var(--color-neutral-100)] overflow-hidden">
             <Image
               src={iphone3}
               alt="Annotated audit deliverable on mobile"
@@ -39,12 +39,12 @@ export function Testimonial({ quote, name, role }: TestimonialProps) {
           </div>
 
           <div className="p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
-            <p className="text-[22px] sm:text-[28px] font-extrabold tracking-[-0.01em] leading-[1.2] text-ink-950">
+            <p className="text-[22px] sm:text-[28px] font-extrabold tracking-[-0.01em] leading-[1.2] text-neutral-950">
               &ldquo;{quote}&rdquo;
             </p>
             <div className="mt-8">
-              <p className="text-[15px] font-bold text-ink-950">— {name}</p>
-              <p className="text-[14px] text-ink-700 font-medium mt-0.5">{role}</p>
+              <p className="text-[15px] font-bold text-neutral-950">— {name}</p>
+              <p className="text-[14px] text-neutral-700 font-medium mt-0.5">{role}</p>
             </div>
           </div>
         </div>

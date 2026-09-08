@@ -25,21 +25,21 @@ function FAQRow({ question, answer, index }: FAQItem & { index: number }) {
       data-faq-row
       className={cn(
         "rounded-[var(--radius-card)] border bg-white transition-colors",
-        open ? "border-brand-500" : "border-ink-200"
+        open ? "border-indigo-500" : "border-neutral-200"
       )}
     >
       <button
         onClick={() => setOpen(!open)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-6 px-5 sm:px-7 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-[var(--radius-card)] cursor-pointer"
+        className="flex w-full items-center justify-between gap-6 px-5 sm:px-7 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 rounded-[var(--radius-card)] cursor-pointer"
       >
-        <span className="text-[15px] sm:text-[17px] font-extrabold tracking-tight text-ink-950">
+        <span className="text-[15px] sm:text-[17px] font-extrabold tracking-tight text-neutral-950">
           {question}
         </span>
         <span
           className={cn(
             "flex items-center justify-center h-9 w-9 rounded-full text-base font-bold transition-all duration-300 flex-shrink-0",
-            open ? "bg-brand-500 text-ink-950 rotate-45" : "bg-ink-100 text-ink-700"
+            open ? "bg-indigo-600 text-white rotate-45" : "bg-neutral-100 text-neutral-700"
           )}
           aria-hidden
         >
@@ -53,7 +53,7 @@ function FAQRow({ question, answer, index }: FAQItem & { index: number }) {
         )}
       >
         <div className="overflow-hidden">
-          <p className="px-5 sm:px-7 pb-6 pr-10 text-[14px] sm:text-[15px] text-ink-700 font-medium leading-relaxed max-w-2xl">
+          <p className="px-5 sm:px-7 pb-6 pr-10 text-[14px] sm:text-[15px] text-neutral-700 font-medium leading-relaxed max-w-2xl">
             {answer}
           </p>
         </div>
@@ -82,11 +82,11 @@ export function ThanksFAQ({ items, eyebrow = "FAQ", headline = "Common questions
   return (
     <section id="faq" className="py-20 sm:py-28">
       <div className="mx-auto max-w-[900px] px-6 sm:px-10 lg:px-14 text-center">
-        <p className="text-caption mb-4 text-ink-600">{eyebrow}</p>
+        <p className="text-caption mb-4 text-neutral-600">{eyebrow}</p>
         <h2
           ref={headlineRef}
           className="text-display mx-auto max-w-[14ch]"
-          style={{ color: "var(--color-ink-950)" }}
+          style={{ color: "var(--color-neutral-950)" }}
         >
           {headline}
         </h2>

@@ -14,15 +14,15 @@ export default function TermsPage() {
   return (
     <>
       <ThanksHeader />
-      <main className="bg-[var(--color-cream)]">
+      <main className="bg-[var(--background)]">
         <article className="mx-auto max-w-2xl px-6 sm:px-10 pt-36 pb-24 sm:pt-44">
-          <p className="text-caption text-coral-600 mb-4">Terms</p>
-          <h1 className="text-headline text-ink-900">Terms &amp; Conditions</h1>
-          <p className="mt-4 text-sm text-ink-500">
+          <p className="text-caption text-rose-600 mb-4">Terms</p>
+          <h1 className="text-headline text-neutral-900">Terms &amp; Conditions</h1>
+          <p className="mt-4 text-sm text-neutral-500">
             Last updated: April 18, 2026
           </p>
 
-          <div className="mt-10 space-y-8 text-[15px] leading-relaxed text-ink-700">
+          <div className="mt-10 space-y-8 text-[15px] leading-relaxed text-neutral-700">
             <section>
               <p>
                 These Terms &amp; Conditions (&ldquo;Terms&rdquo;) govern your
@@ -35,7 +35,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 1. The service
               </h2>
               <p>
@@ -50,7 +50,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 2. Pricing and payment
               </h2>
               <p>
@@ -62,7 +62,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 3. Your responsibilities
               </h2>
               <ul className="space-y-2 list-disc pl-5">
@@ -82,7 +82,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 4. Delivery and turnaround
               </h2>
               <p>
@@ -94,7 +94,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 5. Refunds
               </h2>
               <p>
@@ -107,7 +107,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 6. Intellectual property
               </h2>
               <p>
@@ -122,7 +122,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 7. Confidentiality
               </h2>
               <p>
@@ -135,7 +135,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 8. No guarantee of results
               </h2>
               <p>
@@ -148,7 +148,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 9. Disclaimer of warranties
               </h2>
               <p>
@@ -161,7 +161,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 10. Limitation of liability
               </h2>
               <p>
@@ -175,7 +175,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 11. Indemnification
               </h2>
               <p>
@@ -188,7 +188,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 12. Termination
               </h2>
               <p>
@@ -201,7 +201,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 13. Governing law and disputes
               </h2>
               <p>
@@ -215,7 +215,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 14. Changes to these terms
               </h2>
               <p>
@@ -227,7 +227,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 15. Contact us
               </h2>
               <p>
@@ -237,7 +237,7 @@ export default function TermsPage() {
                 <br />
                 <a
                   href="mailto:hello@knocktwice.io"
-                  className="text-coral-600 hover:text-coral-700 underline underline-offset-2 decoration-coral-200 font-semibold"
+                  className="text-rose-600 hover:text-rose-700 underline underline-offset-2 decoration-rose-200 font-semibold"
                 >
                   hello@knocktwice.io
                 </a>
@@ -245,10 +245,10 @@ export default function TermsPage() {
             </section>
           </div>
 
-          <div className="mt-12 pt-6 border-t border-ink-100">
+          <div className="mt-12 pt-6 border-t border-neutral-100">
             <Link
               href="/"
-              className="text-sm text-ink-500 hover:text-ink-900 transition-colors font-medium"
+              className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors font-medium"
             >
               &larr; Back to Knock Twice Shopify
             </Link>

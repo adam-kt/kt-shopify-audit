@@ -8,10 +8,10 @@ import { useGsapIn } from "@/lib/gsap-hooks";
 type BandTone = "golden" | "brand" | "lilac" | "mint";
 
 const bandStyles: Record<BandTone, string> = {
-  golden: "bg-[var(--color-golden)]",
-  brand: "bg-brand-500",
-  lilac: "bg-[var(--color-lilac)]",
-  mint: "bg-[var(--color-mint)]",
+  golden: "bg-[var(--color-neutral-200)]",
+  brand: "bg-indigo-500",
+  lilac: "bg-[var(--color-neutral-100)]",
+  mint: "bg-[var(--color-neutral-100)]",
 };
 
 export interface CarouselSlide {
@@ -38,12 +38,12 @@ export interface TabBandProps {
 // mirrors the pricing card's h-2 brand bar so these carousels feel like the
 // same family of paper-card deliverables.
 const slideAccentClass: Record<NonNullable<CarouselSlide["tone"]>, string> = {
-  brand: "bg-brand-500",
-  peach: "bg-[var(--color-peach)]",
-  tan: "bg-[var(--color-tan)]",
-  mint: "bg-[var(--color-mint)]",
-  sky: "bg-[var(--color-sky)]",
-  lilac: "bg-[var(--color-lilac)]",
+  brand: "bg-indigo-500",
+  peach: "bg-[var(--color-neutral-100)]",
+  tan: "bg-[var(--color-neutral-100)]",
+  mint: "bg-[var(--color-neutral-100)]",
+  sky: "bg-[var(--color-neutral-100)]",
+  lilac: "bg-[var(--color-neutral-100)]",
 };
 
 // Shared GSAP singleton so subsequent carousels don't re-trigger the dynamic
@@ -191,16 +191,16 @@ export function TabBand({ id, tone, eyebrow, headline, subhead, slides }: TabBan
       )}
     >
       <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-14 text-center">
-        {eyebrow && <p className="text-caption mb-5 text-ink-950/70">{eyebrow}</p>}
+        {eyebrow && <p className="text-caption mb-5 text-neutral-950/70">{eyebrow}</p>}
         <h2
           ref={headlineRef}
           className="text-display mx-auto max-w-[18ch]"
-          style={{ color: "var(--color-ink-950)" }}
+          style={{ color: "var(--color-neutral-950)" }}
         >
           {headline}
         </h2>
         {subhead && (
-          <p className="mt-6 mx-auto max-w-xl text-[15px] sm:text-base font-semibold text-ink-900 leading-relaxed">
+          <p className="mt-6 mx-auto max-w-xl text-[15px] sm:text-base font-semibold text-neutral-900 leading-relaxed">
             {subhead}
           </p>
         )}
@@ -234,13 +234,13 @@ export function TabBand({ id, tone, eyebrow, headline, subhead, slides }: TabBan
                     doesn't clip it. */}
                 {slide.sticker}
 
-                <article className="relative h-full rounded-[var(--radius-card-lg)] bg-white border-2 border-ink-950 shadow-soft-lg overflow-hidden flex">
+                <article className="relative h-full rounded-[var(--radius-card-lg)] bg-white border-2 border-neutral-950 shadow-soft-lg overflow-hidden flex">
                   {/* Thick colored accent strip across the top — matches the
                       pricing card's h-2 brand bar. */}
                   <div className={cn("absolute top-0 left-0 right-0 h-2 z-10", accent)} />
 
                   {slide.image && (
-                    <div className="relative w-1/2 h-full bg-ink-50 border-r-2 border-ink-950">
+                    <div className="relative w-1/2 h-full bg-neutral-50 border-r-2 border-neutral-950">
                       <Image
                         src={slide.image}
                         alt={slide.imageAlt ?? ""}
@@ -257,13 +257,13 @@ export function TabBand({ id, tone, eyebrow, headline, subhead, slides }: TabBan
                       slide.image ? "w-1/2" : "w-full"
                     )}
                   >
-                    <span className="text-caption text-ink-600 mb-3 self-start">
+                    <span className="text-caption text-neutral-600 mb-3 self-start">
                       {slide.label}
                     </span>
-                    <h3 className="text-[clamp(1.25rem,2.2vw,2rem)] font-extrabold tracking-[-0.015em] leading-[1.08] text-ink-950">
+                    <h3 className="text-[clamp(1.25rem,2.2vw,2rem)] font-extrabold tracking-[-0.015em] leading-[1.08] text-neutral-950">
                       {slide.title}
                     </h3>
-                    <p className="mt-3 text-[13px] sm:text-[14px] font-medium leading-relaxed text-ink-700 max-w-md">
+                    <p className="mt-3 text-[13px] sm:text-[14px] font-medium leading-relaxed text-neutral-700 max-w-md">
                       {slide.body}
                     </p>
                   </div>
@@ -291,8 +291,8 @@ export function TabBand({ id, tone, eyebrow, headline, subhead, slides }: TabBan
                 className={cn(
                   "px-5 sm:px-8 py-2.5 rounded-full text-[13px] sm:text-sm font-semibold transition-colors",
                   i === active
-                    ? "bg-white text-ink-950 shadow-soft"
-                    : "text-ink-900 hover:bg-white/30"
+                    ? "bg-white text-neutral-950 shadow-soft"
+                    : "text-neutral-900 hover:bg-white/30"
                 )}
               >
                 {s.label}

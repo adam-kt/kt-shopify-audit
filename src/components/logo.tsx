@@ -9,7 +9,7 @@ interface LogoProps {
 
 export function Logo({ color = "dark", className }: LogoProps) {
   const fill = color === "dark" ? "#141414" : "#ffffff";
-  const labelColor = color === "dark" ? "text-ink-400" : "text-white/60";
+  const labelColor = color === "dark" ? "text-neutral-400" : "text-white/60";
 
   return (
     <span className={cn("inline-flex items-center gap-3", className)}>

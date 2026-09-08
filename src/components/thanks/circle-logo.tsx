@@ -14,7 +14,7 @@ export function CircleLogo({ className, size = 76 }: CircleLogoProps) {
   return (
     <div
       className={cn(
-        "relative inline-flex items-center justify-center rounded-full bg-brand-500 text-ink-950 select-none",
+        "relative inline-flex items-center justify-center rounded-full bg-indigo-600 text-white select-none",
         className
       )}
       style={{ width: size, height: size }}

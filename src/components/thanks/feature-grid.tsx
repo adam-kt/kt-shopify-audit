@@ -14,13 +14,13 @@ interface Feature {
 }
 
 const toneStyles: Record<Tone, string> = {
-  brand: "bg-brand-500",
-  peach: "bg-[var(--color-peach)]",
-  tan: "bg-[var(--color-tan)]",
-  mint: "bg-[var(--color-mint)]",
-  sky: "bg-[var(--color-sky)]",
-  lilac: "bg-[var(--color-lilac)]",
-  golden: "bg-[var(--color-golden-soft)]",
+  brand: "bg-indigo-500",
+  peach: "bg-[var(--color-neutral-100)]",
+  tan: "bg-[var(--color-neutral-100)]",
+  mint: "bg-[var(--color-neutral-100)]",
+  sky: "bg-[var(--color-neutral-100)]",
+  lilac: "bg-[var(--color-neutral-100)]",
+  golden: "bg-[var(--color-neutral-100)]",
 };
 
 interface FeatureGridProps {

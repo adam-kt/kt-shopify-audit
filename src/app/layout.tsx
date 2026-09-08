@@ -1,37 +1,16 @@
 import type { Metadata } from "next";
-import { Anton } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import { CookieConsent } from "@/components/cookie-consent";
 import "./globals.css";
 
-const anton = Anton({
+/* Aceternity's components are authored against a neutral system sans.
+   The F37 trial faces (Zagma / Elastica / Ginger Mono) are no longer loaded;
+   the files remain under public/fonts if the display face is reinstated. */
+const inter = Inter({
   subsets: ["latin"],
-  weight: "400",
   display: "swap",
-  variable: "--font-anton",
-});
-
-const gingerMono = localFont({
-  src: [
-    { path: "../../public/fonts/ginger-mono/F37GingerMonoTrial-Regular.otf", weight: "400", style: "normal" },
-    { path: "../../public/fonts/ginger-mono/F37GingerMonoTrial-Bold.otf", weight: "700", style: "normal" },
-  ],
-  display: "swap",
-  variable: "--font-mono-display",
-});
-
-const zagma = localFont({
-  src: [
-    { path: "../../public/fonts/zagma/F37ZagmaTrial-Light.otf", weight: "300", style: "normal" },
-    { path: "../../public/fonts/zagma/F37ZagmaTrial-Book.otf", weight: "400", style: "normal" },
-    { path: "../../public/fonts/zagma/F37ZagmaTrial-BookItalic.otf", weight: "400", style: "italic" },
-    { path: "../../public/fonts/zagma/F37ZagmaTrial-Regular.otf", weight: "500", style: "normal" },
-    { path: "../../public/fonts/zagma/F37ZagmaTrial-RegularItalic.otf", weight: "500", style: "italic" },
-    { path: "../../public/fonts/zagma/F37ZagmaTrial-Bold.otf", weight: "700", style: "normal" },
-  ],
-  display: "swap",
-  variable: "--font-zagma",
+  variable: "--font-inter",
 });
 
 const GA_MEASUREMENT_ID = "G-PC8RMENX1Z";
@@ -92,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${zagma.variable} ${anton.variable} ${gingerMono.variable}`}
+      className={inter.variable}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />

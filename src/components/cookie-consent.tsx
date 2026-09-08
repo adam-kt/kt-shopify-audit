@@ -43,24 +43,24 @@ export function CookieConsent() {
 
   return (
     <div
-      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-md z-[90] rounded-[var(--radius-card)] border border-ink-200 bg-white shadow-soft-lg p-5 sm:p-6"
+      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-md z-[90] rounded-[var(--radius-card)] border border-neutral-200 bg-white shadow-soft-lg p-5 sm:p-6"
       role="dialog"
       aria-label="Cookie preferences"
     >
-      <p className="text-sm text-ink-700 leading-relaxed">
+      <p className="text-sm text-neutral-700 leading-relaxed">
         We use cookies for analytics to understand how visitors use the site.
         No ads, no tracking across sites.
       </p>
       <div className="mt-4 flex gap-2">
         <button
           onClick={() => choose("granted")}
-          className="flex-1 rounded-full bg-ink-900 text-white text-sm font-semibold px-4 py-2 hover:bg-ink-800 transition-colors cursor-pointer"
+          className="flex-1 rounded-full bg-neutral-900 text-white text-sm font-semibold px-4 py-2 hover:bg-neutral-800 transition-colors cursor-pointer"
         >
           Accept
         </button>
         <button
           onClick={() => choose("denied")}
-          className="flex-1 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold px-4 py-2 hover:bg-ink-200 transition-colors cursor-pointer"
+          className="flex-1 rounded-full bg-neutral-100 text-neutral-700 text-sm font-semibold px-4 py-2 hover:bg-neutral-200 transition-colors cursor-pointer"
         >
           Decline
         </button>
