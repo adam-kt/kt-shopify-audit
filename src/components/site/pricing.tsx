@@ -118,8 +118,8 @@ export function SitePricing() {
         </div>
 
         <p className="text-muted-foreground mt-8 text-center text-sm">
-          Full refund if we haven&rsquo;t started your review. Secure payment via
-          Square.
+          No admin access needed &middot; Full refund if we haven&rsquo;t started
+          &middot; Secure payment via Square
         </p>
       </div>
 

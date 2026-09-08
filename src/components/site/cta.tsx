@@ -27,13 +27,24 @@ import React from "react";
 import { ArrowRight, MessageCircleQuestion } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/** The four-step process moved to the pricing section, where it is more use.
- *  This column carries the objections that remain at the point of decision. */
-const REASSURANCES = [
-  "No admin access, no app install, no code on your site.",
-  "Full refund if we haven't started your review.",
-  "One payment. No retainer, no subscription.",
-];
+/**
+ * The column upstream reserved for a testimonial, now holding the real one.
+ *
+ * The quote is the client's own account of their own numbers, attributed to a
+ * named person at a named store, which is what makes it usable. Nothing here is
+ * a claim the site makes on its own behalf.
+ *
+ * One edit to the source quote: an em dash before "conversion went" is a full
+ * stop, to match the punctuation rule across the rest of the page. No wording
+ * changed.
+ */
+const TESTIMONIAL = {
+  quote:
+    "They found 14 issues we'd been blind to for months. Three of the top fixes took our dev team a single sprint. Conversion went from 1.6% to 2.3% within six weeks.",
+  name: "Sarah Chen",
+  role: "Head of Ecommerce",
+  company: "soldout.nyc",
+};
 
 export function SiteCta() {
   return (
@@ -71,14 +82,17 @@ export function SiteCta() {
       </div>
 
       <div className="border-t border-dashed p-8 md:border-t-0 md:border-l md:p-14">
-        <p className="text-sm font-semibold tracking-tight">Before you ask</p>
-        <ul className="mt-4 flex flex-col gap-3">
-          {REASSURANCES.map((item) => (
-            <li key={item} className="text-muted-foreground text-sm">
-              {item}
-            </li>
-          ))}
-        </ul>
+        <figure className="flex h-full flex-col justify-center">
+          <blockquote className="text-base leading-relaxed">
+            &ldquo;{TESTIMONIAL.quote}&rdquo;
+          </blockquote>
+          <figcaption className="mt-5 flex flex-col gap-0.5 text-sm">
+            <span className="font-semibold">{TESTIMONIAL.name}</span>
+            <span className="text-muted-foreground">
+              {TESTIMONIAL.role}, {TESTIMONIAL.company}
+            </span>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
