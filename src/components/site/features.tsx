@@ -32,7 +32,7 @@ import {
   PageSilhouettes,
   RankedList,
   AnnotatedStack,
-  RescanTimeline,
+  RescanCheck,
 } from "./card-graphics";
 
 interface FeatureCard {
@@ -69,7 +69,7 @@ const CARDS: FeatureCard[] = [
     title: "We check back after you ship",
     description:
       "Thirty days later we rescan, confirm the fixes landed, and flag anything new. No extra cost.",
-    graphic: <RescanTimeline />,
+    graphic: <RescanCheck />,
     className: "md:col-span-2 md:row-span-1",
   },
 ];

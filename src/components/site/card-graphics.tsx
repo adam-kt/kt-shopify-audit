@@ -308,3 +308,96 @@ export function AnnotatedStack() {
     </div>
   );
 }
+
+/* -------------------------------------------------- card 4, alternative */
+
+/**
+ * The rescan as a before-and-after of the findings themselves.
+ *
+ * The timeline version was vertical in a card twice as wide as it is tall, so it
+ * left most of the width empty and read thin beside the other three. This runs
+ * across the card and shows what the rescan actually produces rather than the
+ * dates it happens on.
+ *
+ * Deliberately not all-green. The card says we "confirm the fixes landed, and
+ * flag anything new", so one finding is still open and one is new. A graphic
+ * where every problem resolves would promise an outcome we do not control.
+ */
+const RESCAN_BEFORE = FINDINGS.slice(0, 3);
+
+export function RescanCheck() {
+  const reduceMotion = useReducedMotion();
+
+  const Column = ({
+    label,
+    children,
+  }: {
+    label: string;
+    children: React.ReactNode;
+  }) => (
+    <div className="flex min-w-0 flex-1 flex-col gap-2">
+      <span className="text-muted-foreground text-[10px] font-semibold tracking-wide uppercase">
+        {label}
+      </span>
+      <div className="flex flex-col gap-1.5">{children}</div>
+    </div>
+  );
+
+  const Row = ({
+    rank,
+    text,
+    tone,
+    i,
+  }: {
+    rank: string;
+    text: string;
+    tone: "open" | "fixed" | "new";
+    i: number;
+  }) => (
+    <motion.div
+      initial={reduceMotion ? false : { opacity: 0, y: 4 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.28, delay: i * 0.07 }}
+      className="border-border flex items-center gap-2 rounded border px-2 py-1.5"
+    >
+      <span
+        className={cn(
+          "flex size-3 shrink-0 items-center justify-center rounded-full text-[7px] font-bold text-white",
+          tone === "fixed" && "bg-emerald-500",
+          tone === "open" && "bg-red-500",
+          tone === "new" && "bg-amber-500"
+        )}
+      >
+        {tone === "fixed" ? "\u2713" : tone === "new" ? "+" : ""}
+      </span>
+      <span className="text-muted-foreground font-mono text-[9px] tabular-nums">
+        {rank}
+      </span>
+      <span className="truncate text-[10px]">{text}</span>
+    </motion.div>
+  );
+
+  return (
+    <div aria-hidden className="flex h-full w-full items-center gap-4 p-2 md:gap-6">
+      <Column label="Day 0 · delivered">
+        {RESCAN_BEFORE.map((f, i) => (
+          <Row key={f.rank} rank={f.rank} text={f.title} tone="open" i={i} />
+        ))}
+      </Column>
+
+      <div className="text-muted-foreground flex shrink-0 flex-col items-center gap-1">
+        <span className="bg-border h-8 w-px" />
+        <span className="text-[9px] whitespace-nowrap">30 days</span>
+        <span className="bg-border h-8 w-px" />
+      </div>
+
+      <Column label="Day 30 · rescan">
+        <Row rank={RESCAN_BEFORE[0].rank} text="Fixed, confirmed" tone="fixed" i={0} />
+        <Row rank={RESCAN_BEFORE[1].rank} text="Fixed, confirmed" tone="fixed" i={1} />
+        <Row rank={RESCAN_BEFORE[2].rank} text="Still open" tone="open" i={2} />
+        <Row rank="F.10" text="New since launch" tone="new" i={3} />
+      </Column>
+    </div>
+  );
+}
