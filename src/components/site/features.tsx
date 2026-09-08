@@ -29,9 +29,9 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
-  CoverageMap,
+  PageSilhouettes,
   RankedList,
-  AnnotatedCrop,
+  AnnotatedStack,
   RescanTimeline,
 } from "./card-graphics";
 
@@ -48,7 +48,7 @@ const CARDS: FeatureCard[] = [
     title: "Every page, not just the obvious ones",
     description:
       "Homepage, collections, product pages, cart, checkout, navigation. Desktop and phone.",
-    graphic: <CoverageMap />,
+    graphic: <PageSilhouettes />,
     className: "md:col-span-1 md:row-span-1",
   },
   {
@@ -62,7 +62,7 @@ const CARDS: FeatureCard[] = [
     title: "A screenshot for every finding",
     description:
       "Marked up on your own store, with the change written next to it. Nobody has to guess what we meant.",
-    graphic: <AnnotatedCrop />,
+    graphic: <AnnotatedStack />,
     className: "md:col-span-1 md:row-span-2",
   },
   {

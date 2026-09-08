@@ -181,3 +181,130 @@ export function RescanTimeline() {
     </div>
   );
 }
+
+/* -------------------------------------------------- card 1, alternative */
+
+/**
+ * Page silhouettes rather than a list of surface names.
+ *
+ * The first version rendered the surfaces as text chips, which restated the
+ * card's own body copy word for word. These are abstract wireframes: each page
+ * type has a recognisably different shape, so the card shows range instead of
+ * repeating a list.
+ */
+const PAGE_SHAPES = [
+  { name: "Home", rows: ["h-5 w-full", "h-1.5 w-2/3", "h-1.5 w-1/2"] },
+  { name: "Collection", grid: true },
+  { name: "Product", split: true },
+  { name: "Cart", rows: ["h-2 w-full", "h-2 w-full", "h-1.5 w-1/3"] },
+  { name: "Checkout", rows: ["h-1.5 w-full", "h-1.5 w-full", "h-1.5 w-full", "h-3 w-1/2"] },
+  { name: "Nav", nav: true },
+];
+
+export function PageSilhouettes() {
+  const reduceMotion = useReducedMotion();
+  return (
+    <div aria-hidden className="grid h-full w-full grid-cols-3 gap-2 p-1">
+      {PAGE_SHAPES.map((p, i) => (
+        <motion.div
+          key={p.name}
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.28, delay: i * 0.05 }}
+          className="border-border flex flex-col gap-1 rounded border p-1.5"
+        >
+          <div className="flex flex-1 flex-col gap-1 overflow-hidden">
+            {p.grid && (
+              <div className="grid flex-1 grid-cols-3 gap-0.5">
+                {Array.from({ length: 6 }, (_, n) => (
+                  <span key={n} className="bg-muted rounded-[1px]" />
+                ))}
+              </div>
+            )}
+            {p.split && (
+              <div className="flex flex-1 gap-1">
+                <span className="bg-muted flex-1 rounded-[1px]" />
+                <div className="flex flex-1 flex-col gap-0.5">
+                  <span className="bg-muted h-1 w-full rounded-[1px]" />
+                  <span className="bg-muted h-1 w-2/3 rounded-[1px]" />
+                  <span className="bg-muted/60 mt-auto h-2 w-full rounded-[1px]" />
+                </div>
+              </div>
+            )}
+            {p.nav && (
+              <div className="flex flex-1 flex-col gap-0.5">
+                <span className="bg-muted h-1.5 w-full rounded-[1px]" />
+                <span className="bg-muted/60 h-1 w-1/2 rounded-[1px]" />
+                <span className="bg-muted/60 h-1 w-2/3 rounded-[1px]" />
+              </div>
+            )}
+            {p.rows?.map((r, n) => (
+              <span key={n} className={cn("bg-muted rounded-[1px]", r)} />
+            ))}
+          </div>
+          <span className="text-muted-foreground text-[8px] leading-none">
+            {p.name}
+          </span>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+/* -------------------------------------------------- card 3, alternative */
+
+/**
+ * A stack of annotated frames rather than one.
+ *
+ * The first version put a single pin on a single capture, which is exactly what
+ * the hero already does two sections above. The word doing the work on this card
+ * is "every", so the graphic shows several: one frame per finding, stacked.
+ */
+export function AnnotatedStack() {
+  const reduceMotion = useReducedMotion();
+  const shown = FINDINGS.slice(0, 4);
+  return (
+    <div aria-hidden className="relative h-full w-full p-1">
+      {shown.map((f, i) => {
+        const sev = SEVERITY[f.severity];
+        return (
+          <motion.div
+            key={f.rank}
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: i * 0.08 }}
+            style={{ top: `${i * 24}%`, left: `${i % 2 === 0 ? 0 : 8}%`, zIndex: i }}
+            className="border-border bg-card absolute w-[88%] rounded border p-2 shadow-md"
+          >
+            {/* Abstract page behind the mark */}
+            <div className="relative mb-1.5 flex h-10 gap-1 overflow-hidden rounded-[2px]">
+              <span className="bg-muted w-1/3 rounded-[1px]" />
+              <div className="flex flex-1 flex-col gap-0.5">
+                <span className="bg-muted h-1 w-full rounded-[1px]" />
+                <span className="bg-muted h-1 w-2/3 rounded-[1px]" />
+                <span className="bg-muted/60 mt-auto h-2 w-1/2 rounded-[1px]" />
+              </div>
+              <span
+                className={cn(
+                  "absolute size-2.5 rounded-full ring-2",
+                  sev.dot,
+                  sev.ring
+                )}
+                style={{ left: f.pin.x, top: f.pin.y }}
+              />
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className={cn("size-1.5 shrink-0 rounded-full", sev.dot)} />
+              <span className="text-muted-foreground font-mono text-[8px]">
+                {f.rank}
+              </span>
+              <span className="truncate text-[9px] font-medium">{f.title}</span>
+            </div>
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
