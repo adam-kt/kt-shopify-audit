@@ -16,10 +16,14 @@
  *    portraits presented as customers, the same fabricated social proof as the
  *    Unsplash cluster in the block we rejected earlier.
  *  - All 13 remote images gone; every asset is local.
- *  - Copy is short and blunt by intent. Every claim holds by construction —
- *    price, turnaround, scope, rescan, verification. No outcome promises and no
- *    statistics. The scarcity pill upstream placed above the headline is gone;
- *    its "3 slots open this month" was hardcoded and unverifiable.
+ *  - Copy is short and blunt by intent, and scoped to what this product can
+ *    actually know. It reviews the interface and checks claims against live
+ *    catalog data; it has no access to the merchant's analytics, session
+ *    recordings or funnel. So the copy speaks to friction and opportunity
+ *    ("what to make easier") and never to observed behaviour ("where people
+ *    give up", "where buyers drop off") — that would need data we do not have.
+ *    Same rule as the numbers: no outcome promises, no statistics. The upstream
+ *    scarcity pill is gone; "3 slots open this month" was hardcoded.
  *  - Auto-rotation honours prefers-reduced-motion, and the tablist has proper
  *    tab/tabpanel semantics with arrow-key navigation, which upstream omits.
  */
@@ -66,8 +70,8 @@ export function SiteHero() {
         <div className="mt-6 flex w-full flex-col items-start justify-between gap-4 md:mt-10 md:flex-row md:items-end md:gap-10">
           <div>
             <h2 className="text-muted-foreground relative mb-8 max-w-2xl text-left text-sm tracking-wide antialiased sm:text-base md:text-lg">
-              Every page, every step to checkout. We show you where people
-              give up.
+              Every page, every step to checkout. We show you what to make
+              easier.
             </h2>
 
             <div className="relative mb-4 flex w-full flex-col justify-center gap-y-2 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4">
