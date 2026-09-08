@@ -42,7 +42,6 @@ const TESTIMONIAL = {
   quote:
     "They found 14 issues we'd been blind to for months. Three of the top fixes took our dev team a single sprint. Conversion went from 1.6% to 2.3% within six weeks.",
   name: "Sarah Chen",
-  role: "Head of Ecommerce",
   company: "soldout.nyc",
 };
 
@@ -89,7 +88,7 @@ export function SiteCta() {
           <figcaption className="mt-5 flex flex-col gap-0.5 text-sm">
             <span className="font-semibold">{TESTIMONIAL.name}</span>
             <span className="text-muted-foreground">
-              {TESTIMONIAL.role}, {TESTIMONIAL.company}
+              {TESTIMONIAL.company}
             </span>
           </figcaption>
         </figure>
