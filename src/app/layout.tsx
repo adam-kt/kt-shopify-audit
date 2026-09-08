@@ -38,21 +38,12 @@ export const metadata: Metadata = {
     title: "Shopify Conversion Audit | Knock Twice",
     description:
       "Expert Shopify conversion audit for DTC brands. Prioritized findings, actionable recommendations, delivered in 5 days. $750.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Knock Twice Shopify Conversion Audit",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Shopify Conversion Audit | Knock Twice",
     description:
       "Expert Shopify conversion audit for DTC brands. Prioritized findings, actionable recommendations. $750.",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,

@@ -15,9 +15,8 @@
  *    secure file sharing, team collaboration).
  *  - All four skeleton illustrations dropped, ~480 lines of them. They depict
  *    chat bubbles, file transfers and an avatar cluster, and the last pulls
- *    remote portraits from assets.aceternity.com — the same fake social proof
- *    pattern as every other block so far. Replaced with placeholders pending
- *    real artwork; each names the graphic it is standing in for.
+ *    remote portraits from assets.aceternity.com. Replaced with the graphics in
+ *    card-graphics.tsx, two of which render real findings from shared data.
  *  - Neutral/zinc colours swapped for semantic tokens so the card themes with
  *    the rest of the site.
  *
@@ -29,12 +28,18 @@ import Link from "next/link";
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  CoverageMap,
+  RankedList,
+  AnnotatedCrop,
+  RescanTimeline,
+} from "./card-graphics";
 
 interface FeatureCard {
   title: string;
   description: string;
-  /** What the finished graphic should depict. Remove once art lands. */
-  placeholder: string;
+  /** Decorative. The card heading and body carry the meaning. */
+  graphic: React.ReactNode;
   className: string;
 }
 
@@ -43,28 +48,28 @@ const CARDS: FeatureCard[] = [
     title: "Every page, not just the obvious ones",
     description:
       "Homepage, collections, product pages, cart, checkout, navigation. Desktop and phone.",
-    placeholder: "Surface coverage map",
+    graphic: <CoverageMap />,
     className: "md:col-span-1 md:row-span-1",
   },
   {
     title: "Ranked by what's worth doing",
     description:
       "Start at the top and stop when the sprint runs out. Nothing else needs deciding.",
-    placeholder: "Ranked findings list",
+    graphic: <RankedList />,
     className: "md:col-span-1 md:row-span-1",
   },
   {
     title: "A screenshot for every finding",
     description:
       "Marked up on your own store, with the change written next to it. Nobody has to guess what we meant.",
-    placeholder: "Annotated screenshot",
+    graphic: <AnnotatedCrop />,
     className: "md:col-span-1 md:row-span-2",
   },
   {
     title: "We check back after you ship",
     description:
       "Thirty days later we rescan, confirm the fixes landed, and flag anything new. No extra cost.",
-    placeholder: "Rescan timeline / before-and-after",
+    graphic: <RescanTimeline />,
     className: "md:col-span-2 md:row-span-1",
   },
 ];
@@ -106,7 +111,7 @@ export function SiteFeatures() {
   );
 }
 
-const Card = ({ title, description, placeholder, className }: FeatureCard) => {
+const Card = ({ title, description, graphic, className }: FeatureCard) => {
   return (
     <div
       className={cn(
@@ -115,7 +120,7 @@ const Card = ({ title, description, placeholder, className }: FeatureCard) => {
       )}
     >
       <div className="h-48 w-full overflow-hidden rounded-md md:h-full md:min-h-48">
-        <GraphicPlaceholder label={placeholder} />
+        {graphic}
       </div>
       <div className="mt-6 shrink-0">
         <h3 className="text-base font-bold tracking-tight">{title}</h3>
@@ -123,21 +128,6 @@ const Card = ({ title, description, placeholder, className }: FeatureCard) => {
           {description}
         </p>
       </div>
-    </div>
-  );
-};
-
-/**
- * Stand-in for the card artwork. Deliberately plain and obviously unfinished —
- * it should never be mistaken for a finished graphic, and it names what belongs
- * there so the art can be made without re-reading this file.
- */
-const GraphicPlaceholder = ({ label }: { label: string }) => {
-  return (
-    <div className="border-border bg-muted/40 flex h-full min-h-48 w-full items-center justify-center rounded-md border border-dashed">
-      <span className="text-muted-foreground/70 px-4 text-center text-xs font-medium tracking-wide">
-        {label}
-      </span>
     </div>
   );
 };
