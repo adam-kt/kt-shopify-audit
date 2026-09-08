@@ -20,9 +20,9 @@
  * would undercut the "every claim checked against your live store data" promise
  * sitting three sections above it.
  *
- * F.05 is deliberately an OK finding. The register records what is working as
- * well as what is not, which is both true and more credible than a list of
- * nothing but problems.
+ * The findings themselves live in src/content/findings.ts, shared with the hero
+ * review slides so the two cannot drift. They are real, de-identified findings
+ * from real audits rather than the invented set this component shipped with.
  */
 
 import React from "react";
@@ -51,7 +51,7 @@ export function SiteDeliverable() {
         <div className="bg-card mt-10 overflow-hidden rounded-xl ring-1 ring-black/5 md:mt-14 dark:ring-white/10">
           <div className="text-muted-foreground flex items-center justify-between border-b px-5 py-3 text-xs font-medium tracking-wide uppercase">
             <span>Findings register</span>
-            <span>Sample</span>
+            <span>From recent audits</span>
           </div>
 
           <ul className="divide-border divide-y">
@@ -96,7 +96,7 @@ export function SiteDeliverable() {
           </ul>
 
           <p className="text-muted-foreground border-t px-5 py-3 text-xs">
-            Six of the findings from a recent audit. Each one appears again in
+            Real findings from recent audits, de-identified. Each one appears in
             the document on an annotated screenshot of the page it was found on.
           </p>
         </div>
