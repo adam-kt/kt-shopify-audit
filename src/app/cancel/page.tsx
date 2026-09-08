@@ -1,8 +1,8 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ThanksHeader } from "@/components/thanks/header";
-import { ThanksFooter } from "@/components/thanks/footer";
+import { SiteHeader } from "@/components/site/header";
+import { SiteFooter } from "@/components/site/footer";
 
 export const metadata: Metadata = {
   title: "Checkout Cancelled — Knock Twice Shopify",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function CancelPage() {
   return (
     <>
-      <ThanksHeader />
+      <SiteHeader />
       <main className="min-h-screen bg-[var(--background)]">
         <div className="mx-auto max-w-2xl px-6 sm:px-10 pt-36 pb-20 sm:pt-44 sm:pb-28">
         <div className="text-center">
@@ -62,7 +62,7 @@ export default function CancelPage() {
         </div>
         </div>
       </main>
-      <ThanksFooter />
+      <SiteFooter />
     </>
   );
 }

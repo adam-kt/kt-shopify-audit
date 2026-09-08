@@ -4,8 +4,8 @@ import { Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import { ThanksHeader } from "@/components/thanks/header";
-import { ThanksFooter } from "@/components/thanks/footer";
+import { SiteHeader } from "@/components/site/header";
+import { SiteFooter } from "@/components/site/footer";
 
 // Curated option sets — kept inline since they're only used here.
 const CATEGORIES = [
@@ -367,7 +367,7 @@ function TextArea({
 export default function IntakePage() {
   return (
     <>
-      <ThanksHeader />
+      <SiteHeader />
       <main className="min-h-screen bg-[var(--background)] pt-36 pb-20 sm:pt-44 sm:pb-28">
         <div className="mx-auto max-w-2xl px-6 sm:px-10">
         <div className="mb-10 text-center">
@@ -396,7 +396,7 @@ export default function IntakePage() {
         </p>
         </div>
       </main>
-      <ThanksFooter />
+      <SiteFooter />
     </>
   );
 }

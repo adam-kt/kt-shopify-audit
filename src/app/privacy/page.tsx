@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ThanksHeader } from "@/components/thanks/header";
-import { ThanksFooter } from "@/components/thanks/footer";
+import { SiteHeader } from "@/components/site/header";
+import { SiteFooter } from "@/components/site/footer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Knock Twice Shopify",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <ThanksHeader />
+      <SiteHeader />
       <main className="bg-[var(--background)]">
         <article className="mx-auto max-w-2xl px-6 sm:px-10 pt-36 pb-24 sm:pt-44">
           <p className="text-caption text-rose-600 mb-4">Privacy Policy</p>
@@ -240,7 +240,7 @@ export default function PrivacyPage() {
           </div>
         </article>
       </main>
-      <ThanksFooter />
+      <SiteFooter />
     </>
   );
 }

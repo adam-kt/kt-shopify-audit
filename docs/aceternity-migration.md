@@ -11,38 +11,84 @@ is live commerce or measurement; breaking it costs money, not polish.
 
 ## 0. Pre-flight
 
-### The Tailwind problem
+> **Status:** the project was re-scaffolded on a clean Next.js 15 base
+> (branch `aceternity-rebuild`). What follows describes that base.
 
-This project runs **Tailwind 4.2.2 with CSS-first config**. There is no
-`tailwind.config.ts`. `src/app/globals.css` bootstraps with `@import "tailwindcss"`
-followed by an `@theme {}` block.
+### The stack
 
-Aceternity components are written for **Tailwind v3**. Their install steps tell you to
-add `theme.extend.animation` / `theme.extend.keyframes` to a config file that doesn't
-exist here, and several ship an `addVariablesForColors` plugin snippet importing
-`tailwindcss/plugin`.
+| | |
+|---|---|
+| Next.js | 15.5.25 (App Router, `src/`) |
+| React | 19.1.0 |
+| Tailwind | v4, CSS-first config, initialised by `shadcn init` |
+| shadcn | style `base-nova`, baseColor `neutral`, CSS variables |
+| Registry | `@aceternity` in `components.json`, auth via `${ACETERNITY_API_KEY}` from `.env.local` |
 
-Two options:
+**Correction to an earlier note in this doc:** Aceternity components were
+described here as Tailwind v3 code needing an `@config` bridge. That is wrong
+for the current registry — Aceternity Pro targets "Next.js 15, Tailwind CSS v4
+and Motion for react". The three installed components needed no bridge. Only
+the older free-component docs still show v3 config steps.
 
-1. **Compat bridge (recommended for a copy-paste-heavy port).** Create
-   `tailwind.config.ts` and add `@config "../../tailwind.config.ts";` to the top of
-   `globals.css`, immediately after the `@import`. Aceternity's instructions then work
-   as published.
-2. **Translate per component.** Move each component's keyframes into `globals.css` as
-   `@keyframes` plus `@theme { --animate-*: ... }`. Cleaner long-term, slower per block.
+**Next 16 was deliberately not taken.** `create-next-app@latest` now scaffolds
+16.x. The project is pinned to 15 because that is what Aceternity targets and
+what the Square/Klaviyo integration is proven against. Upgrading is a separate
+piece of work from the redesign; doing both at once makes failures unattributable.
 
-Good news: the `@theme` block *extends* Tailwind's default palette rather than
-replacing it, so Aceternity's `bg-slate-900` / `text-neutral-300` classes resolve fine.
+### The pristine / adapted rule
+
+This is the convention that keeps registry updates cheap. It is enforced by an
+ESLint override in `eslint.config.mjs`.
+
+| Directory | Contents | Linting | Edit? |
+|---|---|---|---|
+| `src/block/` | vendored blocks, verbatim from the registry | relaxed | **never** |
+| `src/components/ui/` | vendored primitives + shadcn output | relaxed | **never** |
+| `src/components/site/` | our adaptations of the above | full | yes |
+
+Vendored code ships `any`-typed props and bare `<img>` tags, which fail this
+project's rules — that broke the build twice before the override existed. To
+use a block: copy it into `src/components/site/`, rename the export, and edit
+there. `git diff` against the install commit then always shows the true
+upstream delta, and nothing we write escapes the linter.
+
+### Registry discovery
+
+Per https://ui.aceternity.com/docs/cli — preview before installing rather than
+adding blind:
+
+```bash
+npx shadcn@latest list @aceternity            # all 278 items
+npx shadcn@latest search @aceternity -q card  # search
+npx shadcn@latest view @aceternity/bento-grid # inspect one
+npx shadcn@latest add @aceternity/bento-grid  # install
+```
+
+There is also `npx shadcn@latest mcp init --client claude`, which exposes the
+registry to an AI assistant directly. Not set up yet.
 
 ### Dependencies
 
-| Package | State | Action |
-|---|---|---|
-| `framer-motion` | `^11.15.0`, **imported nowhere** | Re-adopt, or swap to `motion` if your components use the renamed package |
-| `gsap` | `^3.15.0`, drives all current animation | Decide: keep, or retire as blocks migrate. **Do not ship both permanently.** |
-| `react` | `19.2.5` | Framer Motion ≥ 11.11 required — current version is fine |
-| `next` | `15.5.15` | App Router, RSC. Aceternity components need `"use client"` |
-| `tailwindcss` | `4.2.2` | See above |
+| Package | Why |
+|---|---|
+| `motion` | Aceternity's animation runtime. **GSAP and framer-motion are gone** — one runtime now. |
+| `@tabler/icons-react` | required by the Aceternity blocks |
+| `react-fast-marquee` | required by the hero block |
+| `lucide-react` | shadcn's icon library |
+| `square`, `@upstash/redis` | commerce — see §1 |
+| `clsx`, `tailwind-merge`, `class-variance-authority` | `cn()` and variants |
+
+### Installed, not yet wired
+
+`simple-navbar-with-hover-effects`, `hero-section-with-images-grid-and-navbar`,
+`macbook-scroll` — all in `src/block/` / `src/components/ui/`, pristine.
+
+`macbook-scroll` is the only one that is genuinely parameterised (`src`,
+`title`, `badge`, `showGradient`). The two navbar/hero blocks are demo
+compositions: no props, module-private internals, placeholder copy, and — in
+the hero — 19 remote images including six Unsplash portraits used as fake
+customer avatars and a "Trusted by famous brands" marquee of Aceternity's own
+logos. **None of that may ship.** See §B2.
 
 ### Motion budget
 

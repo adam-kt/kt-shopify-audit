@@ -4,13 +4,10 @@ import Script from "next/script";
 import { CookieConsent } from "@/components/cookie-consent";
 import "./globals.css";
 
-/* Aceternity's components are authored against a neutral system sans.
-   The F37 trial faces (Zagma / Elastica / Ginger Mono) are no longer loaded;
-   the files remain under public/fonts if the display face is reinstated. */
 const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
 });
 
 const GA_MEASUREMENT_ID = "G-PC8RMENX1Z";
@@ -69,16 +66,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={inter.variable}
-    >
+    <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className="antialiased">
         {children}
         <CookieConsent />
+
+        {/* Consent Mode defaults to denied; CookieConsent grants on opt-in. */}
         <Script id="gtag-consent-default" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
