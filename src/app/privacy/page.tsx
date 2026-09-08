@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ThanksHeader } from "@/components/thanks/header";
-import { ThanksFooter } from "@/components/thanks/footer";
+import { SiteHeader } from "@/components/site/header";
+import { SiteFooter } from "@/components/site/footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Knock Twice Shopify",
+  title: "Privacy Policy | Knock Twice Shopify",
   description:
     "How Knock Twice LLC collects, uses, and protects your information.",
   robots: { index: true, follow: true },
@@ -13,16 +13,16 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <ThanksHeader />
-      <main className="bg-[var(--color-cream)]">
+      <SiteHeader />
+      <main className="bg-[var(--background)]">
         <article className="mx-auto max-w-2xl px-6 sm:px-10 pt-36 pb-24 sm:pt-44">
-          <p className="text-caption text-coral-600 mb-4">Privacy Policy</p>
-          <h1 className="text-headline text-ink-900">Privacy Policy</h1>
-          <p className="mt-4 text-sm text-ink-500">
+          <p className="text-caption text-rose-600 mb-4">Privacy Policy</p>
+          <h1 className="text-headline text-neutral-900">Privacy Policy</h1>
+          <p className="mt-4 text-sm text-neutral-500">
             Last updated: April 18, 2026
           </p>
 
-          <div className="mt-10 space-y-8 text-[15px] leading-relaxed text-ink-700">
+          <div className="mt-10 space-y-8 text-[15px] leading-relaxed text-neutral-700">
             <section>
               <p>
                 Knock Twice LLC (&ldquo;Knock Twice,&rdquo; &ldquo;we,&rdquo;
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 1. Information we collect
               </h2>
               <p className="mb-3">We collect information in three ways:</p>
@@ -64,7 +64,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 2. How we use information
               </h2>
               <ul className="space-y-2 list-disc pl-5">
@@ -76,7 +76,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 3. Service providers we share information with
               </h2>
               <p className="mb-3">
@@ -85,16 +85,16 @@ export default function PrivacyPage() {
               </p>
               <ul className="space-y-2 list-disc pl-5">
                 <li>
-                  <strong>Square, Inc.</strong> — payment processing. Card data
+                  <strong>Square, Inc.</strong> for payment processing. Card data
                   is handled directly by Square and never passes through our
                   systems.
                 </li>
                 <li>
-                  <strong>Klaviyo, Inc.</strong> — email delivery, profiles,
+                  <strong>Klaviyo, Inc.</strong> for email delivery, profiles,
                   and audience list management.
                 </li>
                 <li>
-                  <strong>Google LLC (Google Analytics 4)</strong> — site
+                  <strong>Google LLC (Google Analytics 4)</strong> for site
                   analytics. Only active after you grant consent.
                 </li>
                 <li>
@@ -109,7 +109,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 4. Cookies and tracking
               </h2>
               <p>
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 5. Data retention
               </h2>
               <p>
@@ -136,7 +136,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 6. Your rights
               </h2>
               <p className="mb-3">
@@ -156,7 +156,7 @@ export default function PrivacyPage() {
                 To exercise any of these rights, email us at{" "}
                 <a
                   href="mailto:hello@knocktwice.io"
-                  className="text-coral-600 hover:text-coral-700 underline underline-offset-2 decoration-coral-200 font-semibold"
+                  className="text-rose-600 hover:text-rose-700 underline underline-offset-2 decoration-rose-200 font-semibold"
                 >
                   hello@knocktwice.io
                 </a>
@@ -165,7 +165,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 7. International users
               </h2>
               <p>
@@ -178,7 +178,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 8. Security
               </h2>
               <p>
@@ -190,7 +190,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 9. Children
               </h2>
               <p>
@@ -200,7 +200,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 10. Changes to this policy
               </h2>
               <p>
@@ -212,7 +212,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 mb-3">
+              <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 mb-3">
                 11. Contact us
               </h2>
               <p>
@@ -222,7 +222,7 @@ export default function PrivacyPage() {
                 <br />
                 <a
                   href="mailto:hello@knocktwice.io"
-                  className="text-coral-600 hover:text-coral-700 underline underline-offset-2 decoration-coral-200 font-semibold"
+                  className="text-rose-600 hover:text-rose-700 underline underline-offset-2 decoration-rose-200 font-semibold"
                 >
                   hello@knocktwice.io
                 </a>
@@ -230,17 +230,17 @@ export default function PrivacyPage() {
             </section>
           </div>
 
-          <div className="mt-12 pt-6 border-t border-ink-100">
+          <div className="mt-12 pt-6 border-t border-neutral-100">
             <Link
               href="/"
-              className="text-sm text-ink-500 hover:text-ink-900 transition-colors font-medium"
+              className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors font-medium"
             >
               &larr; Back to Knock Twice Shopify
             </Link>
           </div>
         </article>
       </main>
-      <ThanksFooter />
+      <SiteFooter />
     </>
   );
 }
