@@ -27,7 +27,7 @@ const FAQS = [
   {
     question: "Who is this for?",
     answer:
-      "Shopify brands doing enough revenue that a few points of conversion matter — founders, operators, ecommerce and growth leads. If you know the store could be doing better but not what to change first, that's the gap this fills.",
+      "Shopify brands where a couple of points of conversion actually move the number. Founders, operators, ecommerce and growth leads. If you know the store could be doing better but not what to change first, that's the gap this fills.",
   },
   {
     question: "Is this only for Shopify stores?",
@@ -47,12 +47,12 @@ const FAQS = [
   {
     question: "Do you implement the recommendations?",
     answer:
-      "Not in the $750 audit — that's analysis and recommendations. If you want the changes made, we quote that from the findings once you've seen them, so you're scoping against a real list rather than a guess.",
+      "Not in the $750 audit. That one is analysis and recommendations. If you want the changes made, we'll quote it from the findings once you've read them, so you're scoping against a real list instead of a guess.",
   },
   {
     question: "What if I already have an agency or an in-house team?",
     answer:
-      "That's usually the better case. They get a prioritized list to work from with no ramp-up, and no argument about what to do first — the ranking does that. Most of our audits go straight to a team that's already building.",
+      "That's usually the better case. They get a list to work from with no ramp-up, and nobody has to argue about what goes first because the ranking settles it. Most of our audits go straight to a team that's already building.",
   },
 ];
 

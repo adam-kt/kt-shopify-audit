@@ -55,7 +55,7 @@ export function SiteNavbar() {
               <Link
                 href="/"
                 className="flex items-center gap-2.5"
-                aria-label="Knock Twice — home"
+                aria-label="Knock Twice home"
               >
                 <CircleLogo size={34} />
                 <span className="text-sm font-semibold tracking-tight">

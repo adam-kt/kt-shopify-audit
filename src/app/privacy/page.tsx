@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Knock Twice Shopify",
+  title: "Privacy Policy | Knock Twice Shopify",
   description:
     "How Knock Twice LLC collects, uses, and protects your information.",
   robots: { index: true, follow: true },
@@ -85,16 +85,16 @@ export default function PrivacyPage() {
               </p>
               <ul className="space-y-2 list-disc pl-5">
                 <li>
-                  <strong>Square, Inc.</strong> — payment processing. Card data
+                  <strong>Square, Inc.</strong> for payment processing. Card data
                   is handled directly by Square and never passes through our
                   systems.
                 </li>
                 <li>
-                  <strong>Klaviyo, Inc.</strong> — email delivery, profiles,
+                  <strong>Klaviyo, Inc.</strong> for email delivery, profiles,
                   and audience list management.
                 </li>
                 <li>
-                  <strong>Google LLC (Google Analytics 4)</strong> — site
+                  <strong>Google LLC (Google Analytics 4)</strong> for site
                   analytics. Only active after you grant consent.
                 </li>
                 <li>

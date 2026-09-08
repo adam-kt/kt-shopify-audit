@@ -80,7 +80,7 @@ export function SiteHero() {
                 href="#pricing"
                 className="bg-primary text-primary-foreground flex h-14 w-full items-center justify-center gap-2 rounded-lg text-center text-base font-medium shadow-sm transition duration-150 active:scale-98 sm:w-52"
               >
-                Get my audit &mdash; $750
+                Get my audit for $750
                 <ArrowRight className="size-4" />
               </Link>
               <Link

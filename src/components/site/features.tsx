@@ -45,9 +45,9 @@ const CARDS: FeatureCard[] = [
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    title: "Ranked, not just listed",
+    title: "Ranked by what's worth doing",
     description:
-      "Ordered by what's worth doing first. Start at the top and stop when the sprint runs out.",
+      "Start at the top and stop when the sprint runs out. Nothing else needs deciding.",
     placeholder: "Ranked findings list",
     className: "md:col-span-1 md:row-span-1",
   },
@@ -61,7 +61,7 @@ const CARDS: FeatureCard[] = [
   {
     title: "We check back after you ship",
     description:
-      "Thirty days later we rescan, confirm the fixes landed, and flag anything new. Included, every time.",
+      "Thirty days later we rescan, confirm the fixes landed, and flag anything new. No extra cost.",
     placeholder: "Rescan timeline / before-and-after",
     className: "md:col-span-2 md:row-span-1",
   },

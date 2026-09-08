@@ -13,7 +13,7 @@ const inter = Inter({
 const GA_MEASUREMENT_ID = "G-PC8RMENX1Z";
 
 export const metadata: Metadata = {
-  title: "Shopify Conversion Audit — Knock Twice",
+  title: "Shopify Conversion Audit | Knock Twice",
   description:
     "Expert Shopify conversion audit for DTC brands. We review your storefront and deliver prioritized, actionable recommendations to improve conversion, trust, and revenue. $750.",
   keywords: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Knock Twice Shopify",
-    title: "Shopify Conversion Audit — Knock Twice",
+    title: "Shopify Conversion Audit | Knock Twice",
     description:
       "Expert Shopify conversion audit for DTC brands. Prioritized findings, actionable recommendations, delivered in 5 days. $750.",
     images: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shopify Conversion Audit — Knock Twice",
+    title: "Shopify Conversion Audit | Knock Twice",
     description:
       "Expert Shopify conversion audit for DTC brands. Prioritized findings, actionable recommendations. $750.",
     images: ["/og-image.png"],

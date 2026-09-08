@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 
 export const metadata: Metadata = {
-  title: "Audit Purchased — Knock Twice Shopify",
+  title: "Audit Purchased | Knock Twice Shopify",
   description: "Your Shopify Conversion Audit has been booked.",
   robots: { index: false, follow: false },
 };
@@ -21,7 +21,7 @@ const nextSteps = [
     icon: FileText,
     title: "We begin your review",
     description:
-      "Once you've submitted the intake form, our team starts a thorough review of your Shopify storefront — every page, flow, and conversion touchpoint.",
+      "Once you've submitted the intake form, our team starts a thorough review of your Shopify storefront. Every page, every flow, every conversion touchpoint.",
   },
   {
     icon: Clock,
@@ -81,14 +81,14 @@ export default function SuccessPage() {
 
         <div className="mt-10 rounded-[var(--radius-card)] bg-neutral-950 p-6 sm:p-8 text-center shadow-soft">
           <p className="text-[11px] font-bold text-rose-300 tracking-[0.12em] uppercase">
-            Step 1 — Now
+            Step 1. Now
           </p>
           <h3 className="mt-2 text-[20px] sm:text-[22px] font-extrabold tracking-[-0.015em] text-white">
             Fill out the intake form
           </h3>
           <p className="mt-2 text-sm text-white/70 max-w-sm mx-auto leading-relaxed">
             Five minutes of detail about your store, products, and struggles
-            — the more we know, the sharper the audit.
+            The more we know, the sharper the audit.
           </p>
           <Link
             href="/intake"

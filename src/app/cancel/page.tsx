@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 
 export const metadata: Metadata = {
-  title: "Checkout Cancelled — Knock Twice Shopify",
+  title: "Checkout Cancelled | Knock Twice Shopify",
   description: "Your checkout was cancelled. No payment was taken.",
   robots: { index: false, follow: false },
 };

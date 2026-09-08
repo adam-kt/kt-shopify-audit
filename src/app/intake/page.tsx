@@ -24,13 +24,13 @@ const CATEGORIES = [
 
 const REVENUE_RANGES = [
   "Under $10K / month",
-  "$10K – $50K / month",
-  "$50K – $250K / month",
-  "$250K – $1M / month",
+  "$10K to $50K / month",
+  "$50K to $250K / month",
+  "$250K to $1M / month",
   "$1M+ / month",
 ];
 
-const TEAM_SIZES = ["Solo / founder", "2–5", "6–20", "21–50", "50+"];
+const TEAM_SIZES = ["Solo / founder", "2 to 5", "6 to 20", "21 to 50", "50+"];
 
 interface IntakeFormState {
   name: string;
@@ -119,7 +119,7 @@ function IntakeForm() {
           <CheckCircle className="h-7 w-7 text-emerald-700" />
         </div>
         <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold tracking-[-0.015em] text-neutral-950">
-          Got it — we&rsquo;re on it.
+          Got it. We&rsquo;re on it.
         </h2>
         <p className="mt-4 text-[15px] text-neutral-600 max-w-md mx-auto leading-relaxed">
           Thanks for the detail. Our team is reviewing your store now and
@@ -202,7 +202,7 @@ function IntakeForm() {
           label="Best-selling products"
           value={form.topProducts}
           onChange={update("topProducts")}
-          placeholder="Top 3–5 SKUs by revenue, and anything you want us to scrutinize closely."
+          placeholder="Top 3 to 5 SKUs by revenue, and anything you want us to scrutinize closely."
         />
       </Section>
 
@@ -241,7 +241,7 @@ function IntakeForm() {
           label="Notes for the team (optional)"
           value={form.notes}
           onChange={update("notes")}
-          placeholder="Anything else we should know — brand guidelines, upcoming launches, things off-limits."
+          placeholder="Anything else we should know. Brand guidelines, upcoming launches, things that are off-limits."
         />
       </Section>
 
@@ -377,7 +377,7 @@ export default function IntakePage() {
           </h1>
           <p className="mt-4 text-[15px] text-neutral-600 leading-relaxed max-w-lg mx-auto">
             The more we know up front, the sharper the audit gets. Takes
-            about five minutes — everything here lands straight in the
+            about five minutes. Everything here lands straight in the
             reviewer&rsquo;s brief.
           </p>
         </div>

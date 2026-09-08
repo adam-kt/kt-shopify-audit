@@ -14,7 +14,7 @@ export default function HomePage() {
         <SiteFeatures />
         <SitePricing />
         <SiteFaq />
-        {/* B3 deliverable preview pending — see docs/aceternity-migration.md */}
+        {/* B3 deliverable preview pending. See docs/aceternity-migration.md */}
       </main>
       <SiteFooter />
     </>

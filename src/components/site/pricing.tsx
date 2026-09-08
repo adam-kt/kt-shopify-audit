@@ -41,7 +41,7 @@ const track = (event: string, params?: Record<string, unknown>) => {
 };
 
 const AUDIT_FEATURES = [
-  "Every page reviewed — homepage to checkout, desktop and phone",
+  "Every page from homepage to checkout, on desktop and phone",
   "Findings ranked by what's worth doing first",
   "An annotated screenshot for every finding",
   "Every number checked against your live store data",
@@ -52,9 +52,9 @@ const AUDIT_FEATURES = [
 const IMPLEMENTATION_FEATURES = [
   "Everything in the audit",
   "We make the changes ourselves",
-  "Scoped and quoted from the audit findings",
+  "Quoted from the findings, once you've read them",
   "Work sequenced by the same ranking",
-  "Rescan on completion, not on a timer",
+  "Rescan once the work is done",
 ];
 
 export function SitePricing() {
@@ -67,15 +67,15 @@ export function SitePricing() {
           One price. No retainer.
         </h2>
         <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-center text-base text-balance md:text-lg">
-          Buy the audit outright. If you want the fixes made as well, we quote
-          that from the findings.
+          Buy the audit on its own. If you want us to make the changes too,
+          we&rsquo;ll quote that once you&rsquo;ve seen the findings.
         </p>
 
         <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 md:grid-cols-2">
           <PlanCard
             featured
             name="The audit"
-            description="You get the findings. Your team ships them."
+            description="We find the problems. Your team fixes them."
             price="$750"
             priceNote="one time"
             features={AUDIT_FEATURES}
@@ -87,7 +87,7 @@ export function SitePricing() {
           />
           <PlanCard
             name="Audit + implementation"
-            description="You get the findings. We ship them."
+            description="We find the problems and fix them too."
             price="Quoted"
             priceNote="from the audit"
             features={IMPLEMENTATION_FEATURES}

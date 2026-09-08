@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Knock Twice Shopify",
+  title: "Terms & Conditions | Knock Twice Shopify",
   description:
     "The terms that govern your purchase and use of the Knock Twice Shopify Conversion Audit.",
   robots: { index: true, follow: true },
