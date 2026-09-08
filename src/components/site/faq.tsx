@@ -23,7 +23,7 @@
 
 import { IconPlus } from "@tabler/icons-react";
 
-const FAQS = [
+export const FAQS = [
   {
     question: "Who is this for?",
     answer:
