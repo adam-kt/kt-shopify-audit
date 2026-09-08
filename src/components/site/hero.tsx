@@ -70,8 +70,9 @@ export function SiteHero() {
         <div className="mt-6 flex w-full flex-col items-start justify-between gap-4 md:mt-10 md:flex-row md:items-end md:gap-10">
           <div>
             <h2 className="text-muted-foreground relative mb-8 max-w-2xl text-left text-sm tracking-wide antialiased sm:text-base md:text-lg">
-              Every page, every step to checkout. We show you what to make
-              easier.
+              Most stores have more worth fixing than there&rsquo;s time to fix.
+              We go through every page, then tell you which handful actually
+              matters and show you exactly where each one is.
             </h2>
 
             <div className="relative mb-4 flex w-full flex-col justify-center gap-y-2 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4">
