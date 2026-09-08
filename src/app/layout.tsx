@@ -65,8 +65,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // `dark` on <html> switches the shadcn token set and activates every
+  // dark: variant in the vendored Aceternity blocks.
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} dark`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>

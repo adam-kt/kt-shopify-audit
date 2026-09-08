@@ -1,34 +1,37 @@
 "use client";
 
 /**
- * B2 — hero.
+ * B2 — hero, with the storefront-review browser window.
  *
- * Adapted from @aceternity/minimal-hero-section-with-parallax-images
- * (src/block/minimal-hero-section-with-parallax-images.tsx, pristine).
- *
- * Chosen over hero-section-with-images-grid-and-navbar and
- * hero-with-framed-image-and-logos: at ~3k it is the smallest of the candidates,
- * depends only on motion, and its parallax image stack is exactly where the
- * local device shots go. The 59k alternative was two-thirds inline SVG path data
- * for eight other companies' logos, all of which would have been deleted.
+ * Adapted from @aceternity/hero-section-with-tabs (src/block/hero-section-with-tabs.tsx,
+ * pristine). The browser chrome is thematically right for this product: the tabs
+ * are the surfaces we audit, and the panel shows the actual review of each. That
+ * also lets the hero absorb B7's "what we review" content, so `#what-you-get`
+ * anchors here.
  *
  * Changed from upstream:
- *  - Copy replaced with the B2 text from docs/aceternity-migration.md.
- *  - Both remote images (assets.aceternity.com) replaced with local shots.
- *  - Buttons wrapping anchors replaced with real links to the live anchors.
- *  - Added the availability pill, the rotating headline and the trust line.
- *  - Rotating headline honours prefers-reduced-motion.
+ *  - Ten template-preview tabs replaced with the four audit surfaces, using the
+ *    local review screenshots.
+ *  - `FEATURED_AVATARS` / `FeaturedImagesSimple` deleted outright — five remote
+ *    portraits presented as customers, the same fabricated social proof as the
+ *    Unsplash cluster in the block we rejected earlier.
+ *  - All 13 remote images gone; every asset is local.
+ *  - Copy is the B2 text from docs/aceternity-migration.md.
+ *  - Auto-rotation honours prefers-reduced-motion, and the tablist has proper
+ *    tab/tabpanel semantics with arrow-key navigation, which upstream omits.
  */
 
 import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import Image, { type StaticImageData } from "next/image";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import shotA from "@/images/macbook-3.png";
-import shotB from "@/images/macbook-4.png";
+import homepageTrust from "@/images/review/homepage-trust.png";
+import productEvidence from "@/images/review/product-evidence.png";
+import cartFunnel from "@/images/review/cart-funnel.png";
+import mobileThumb from "@/images/review/mobile-thumb.png";
 
 const HEADLINE_VARIANTS = [
   "that pays for itself",
@@ -37,53 +40,63 @@ const HEADLINE_VARIANTS = [
   "ranked by ROI",
 ];
 
+const TAB_ITEMS: { title: string; image: StaticImageData; alt: string }[] = [
+  { title: "Homepage", image: homepageTrust, alt: "Homepage trust and clarity review" },
+  { title: "Product pages", image: productEvidence, alt: "Product page evidence review" },
+  { title: "Cart & checkout", image: cartFunnel, alt: "Cart and checkout funnel review" },
+  { title: "Mobile", image: mobileThumb, alt: "Mobile experience review" },
+];
+
+const ROTATE_MS = 10000;
+
 export function SiteHero() {
   return (
-    // overflow-x-clip: the parallax shots are rotated in 3D and translated past
-    // the container edge by design. Without clipping they push the document
-    // wider than the viewport and the whole page scrolls sideways on mobile.
-    <section className="w-full overflow-x-clip pt-28 md:pt-36 lg:pt-44">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <section className="mx-auto w-full max-w-7xl min-w-0 px-4 pt-28 pb-8 md:px-8 md:pt-36 md:pb-12 lg:px-12">
+      <div className="flex w-full min-w-0 flex-col items-start">
         <span className="bg-muted inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium">
           <span className="relative flex size-2">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-            <span className="relative inline-flex size-2 rounded-full bg-emerald-600" />
+            <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
           </span>
           3 audit slots open this month
         </span>
 
-        <h1 className="mt-6 text-2xl font-bold tracking-tight md:text-4xl lg:text-6xl">
+        <h1 className="relative mt-6 max-w-5xl text-left text-4xl font-bold tracking-tight text-balance sm:text-5xl md:text-6xl xl:text-7xl">
           The Shopify audit <RotatingHeadline />
         </h1>
 
-        <p className="text-muted-foreground max-w-xl py-8 text-base md:text-lg">
-          A conversion review of your Shopify storefront, verified against your
-          live store data. Prioritized findings, annotated screenshots, and a
-          30-day rescan &mdash; delivered in 5 business days.
-        </p>
+        <div className="mt-6 flex w-full flex-col items-start justify-between gap-4 md:mt-10 md:flex-row md:items-end md:gap-10">
+          <div>
+            <h2 className="text-muted-foreground relative mb-8 max-w-2xl text-left text-sm tracking-wide antialiased sm:text-base md:text-lg">
+              A conversion review of your Shopify storefront, verified against
+              your live store data. Prioritized findings, annotated screenshots,
+              and a 30-day rescan &mdash; delivered in 5 business days.
+            </h2>
 
-        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-          <Link
-            href="#pricing"
-            className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-sm px-5 py-2.5 text-sm font-semibold shadow-2xl transition-opacity hover:opacity-90"
-          >
-            Get my audit &mdash; $750
-            <ArrowRight className="size-4" />
-          </Link>
-          <Link
-            href="#what-you-get"
-            className="hover:bg-muted rounded-sm border px-5 py-2.5 text-sm font-semibold transition-colors"
-          >
-            See what&rsquo;s included
-          </Link>
+            <div className="relative mb-4 flex w-full flex-col justify-center gap-y-2 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4">
+              <Link
+                href="#pricing"
+                className="bg-primary text-primary-foreground flex h-14 w-full items-center justify-center gap-2 rounded-lg text-center text-base font-medium shadow-sm transition duration-150 active:scale-98 sm:w-52"
+              >
+                Get my audit &mdash; $750
+                <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                href="#what-you-get"
+                className="bg-card flex h-14 w-full items-center justify-center rounded-lg border text-base font-medium shadow-sm transition duration-150 active:scale-98 sm:w-52"
+              >
+                See what&rsquo;s included
+              </Link>
+            </div>
+
+            <p className="text-muted-foreground mt-6 text-xs font-semibold uppercase tracking-[0.12em]">
+              Delivered in 5 business days &middot; Every claim verified &middot;
+              Free 30-day rescan
+            </p>
+          </div>
         </div>
 
-        <p className="text-muted-foreground mt-6 text-xs font-semibold uppercase tracking-[0.12em]">
-          Delivered in 5 business days &middot; Every claim verified &middot; Free
-          30-day rescan
-        </p>
-
-        <ParallaxShots />
+        <ReviewWindow />
       </div>
     </section>
   );
@@ -124,48 +137,106 @@ const RotatingHeadline = () => {
   );
 };
 
-const SHOT_TRANSFORM = "rotateY(20deg) rotateX(40deg) rotateZ(-20deg)";
+export const ReviewWindow = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedItem = TAB_ITEMS[selectedIndex];
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const reduceMotion = useReducedMotion();
 
-const ParallaxShots = () => {
+  const startInterval = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (reduceMotion) return;
+    intervalRef.current = setInterval(
+      () => setSelectedIndex((i) => (i + 1) % TAB_ITEMS.length),
+      ROTATE_MS
+    );
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    startInterval();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [startInterval]);
+
+  const select = (index: number) => {
+    setSelectedIndex(index);
+    startInterval();
+  };
+
+  // Arrow-key navigation, per the WAI-ARIA tabs pattern.
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowRight") select((selectedIndex + 1) % TAB_ITEMS.length);
+    if (e.key === "ArrowLeft")
+      select((selectedIndex - 1 + TAB_ITEMS.length) % TAB_ITEMS.length);
+  };
+
   return (
-    <div className="perspective-distant relative min-h-40 w-full pt-20 sm:min-h-80 md:min-h-100 lg:min-h-200">
-      <motion.div
-        initial={{ opacity: 0, y: -100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="perspective-[4000px] shadow-2xl"
-      >
-        <Image
-          src={shotA}
-          alt="Storefront conversion review on desktop"
-          placeholder="blur"
-          sizes="(max-width: 768px) 100vw, 1200px"
-          className={cn(
-            "absolute inset-0 rounded-lg shadow-xl mask-r-from-20% mask-b-from-20%"
-          )}
-          style={{ transform: SHOT_TRANSFORM }}
-        />
-      </motion.div>
+    <div
+      id="what-you-get"
+      className="relative my-8 flex w-full scroll-mt-28 flex-col items-start justify-start overflow-hidden rounded-2xl shadow-2xl md:my-12"
+    >
+      <div className="bg-muted flex w-full items-center justify-start overflow-hidden py-4 pl-4">
+        <div className="mr-6 flex items-center gap-2" aria-hidden>
+          <div className="size-3 rounded-full bg-red-500" />
+          <div className="size-3 rounded-full bg-yellow-500" />
+          <div className="size-3 rounded-full bg-green-500" />
+        </div>
+        <div
+          role="tablist"
+          aria-label="Surfaces we review"
+          onKeyDown={onKeyDown}
+          className="no-visible-scrollbar flex min-w-0 shrink flex-row items-center justify-start gap-2 overflow-x-auto py-0.5 pr-2 pl-2 md:pl-4"
+        >
+          {TAB_ITEMS.map((item, index) => (
+            <React.Fragment key={item.title}>
+              <button
+                role="tab"
+                id={`review-tab-${index}`}
+                aria-selected={selectedIndex === index}
+                aria-controls="review-panel"
+                tabIndex={selectedIndex === index ? 0 : -1}
+                onClick={() => select(index)}
+                className={cn(
+                  "hover:bg-background flex shrink-0 items-center gap-1 rounded-md px-2.5 py-1 text-xs transition duration-150 sm:text-sm",
+                  selectedIndex === index && "bg-background shadow ring-1 ring-black/10"
+                )}
+              >
+                {item.title}
+              </button>
+              {index !== TAB_ITEMS.length - 1 && (
+                <div className="bg-border h-4 w-px shrink-0 rounded-full" />
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: -100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-        className="perspective-[4000px] -translate-y-10 translate-x-20 md:-translate-y-20 lg:-translate-y-40"
-      >
-        <Image
-          src={shotB}
-          alt="Prioritized findings and action plan"
-          placeholder="blur"
-          sizes="(max-width: 768px) 100vw, 1200px"
-          className={cn(
-            "absolute inset-0 -translate-x-10 rounded-lg shadow-xl mask-r-from-50% mask-b-from-50%"
-          )}
-          style={{ transform: SHOT_TRANSFORM }}
-        />
-      </motion.div>
+      <div className="bg-card perspective-distant w-full overflow-hidden px-4 pt-4">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedItem.title}
+            id="review-panel"
+            role="tabpanel"
+            aria-labelledby={`review-tab-${selectedIndex}`}
+            initial={{ opacity: 0, scale: 0.99, filter: "blur(10px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="bg-background relative h-100 overflow-hidden rounded-tl-xl rounded-tr-xl shadow-sm ring-1 shadow-black/10 ring-black/10 will-change-transform sm:h-140 md:h-180"
+          >
+            <Image
+              src={selectedItem.image}
+              alt={selectedItem.alt}
+              fill
+              sizes="(max-width: 768px) 100vw, 1200px"
+              placeholder="blur"
+              className="object-cover object-top"
+              priority={selectedIndex === 0}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
