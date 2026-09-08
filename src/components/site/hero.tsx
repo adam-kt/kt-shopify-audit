@@ -16,9 +16,10 @@
  *    portraits presented as customers, the same fabricated social proof as the
  *    Unsplash cluster in the block we rejected earlier.
  *  - All 13 remote images gone; every asset is local.
- *  - Copy rewritten: problem-framed headline, plainer subhead. Every claim
- *    is still one that holds by construction — price, turnaround, scope,
- *    rescan, verification. No outcome promises, no invented statistics.
+ *  - Copy is short and blunt by intent. Every claim holds by construction —
+ *    price, turnaround, scope, rescan, verification. No outcome promises and no
+ *    statistics. The scarcity pill upstream placed above the headline is gone;
+ *    its "3 slots open this month" was hardcoded and unverifiable.
  *  - Auto-rotation honours prefers-reduced-motion, and the tablist has proper
  *    tab/tabpanel semantics with arrow-key navigation, which upstream omits.
  */
@@ -37,10 +38,10 @@ import cartFunnel from "@/images/review/cart-funnel.png";
 import mobileThumb from "@/images/review/mobile-thumb.png";
 
 const HEADLINE_VARIANTS = [
-  "you're losing sales.",
-  "buyers hesitate.",
-  "mobile drops off.",
-  "the funnel leaks.",
+  "loses sales.",
+  "loses buyers.",
+  "leaks money.",
+  "breaks down.",
 ];
 
 const TAB_ITEMS: { title: string; image: StaticImageData; alt: string }[] = [
@@ -58,26 +59,15 @@ export function SiteHero() {
   return (
     <section className="mx-auto w-full max-w-7xl min-w-0 px-4 pt-28 pb-8 md:px-8 md:pt-36 md:pb-12 lg:px-12">
       <div className="flex w-full min-w-0 flex-col items-start">
-        <span className="bg-muted inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium">
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-            <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-          </span>
-          3 audit slots open this month
-        </span>
-
-        <h1 className="relative mt-6 max-w-5xl text-left text-4xl font-bold tracking-tight text-balance sm:text-5xl md:text-6xl xl:text-7xl">
-          Find out exactly where <RotatingHeadline />
+        <h1 className="relative max-w-5xl text-left text-4xl font-bold tracking-tight text-balance sm:text-5xl md:text-6xl xl:text-7xl">
+          Where your store <RotatingHeadline />
         </h1>
 
         <div className="mt-6 flex w-full flex-col items-start justify-between gap-4 md:mt-10 md:flex-row md:items-end md:gap-10">
           <div>
             <h2 className="text-muted-foreground relative mb-8 max-w-2xl text-left text-sm tracking-wide antialiased sm:text-base md:text-lg">
-              We go through your storefront the way a buyer does &mdash; homepage
-              to checkout, desktop and mobile &mdash; and check every finding
-              against your live store data. You get a ranked list of what&rsquo;s
-              costing you orders, with screenshots showing exactly what to change
-              and why it&rsquo;s worth doing first.
+              We review every page and send back a ranked list of what to fix.
+              Screenshot for each one.
             </h2>
 
             <div className="relative mb-4 flex w-full flex-col justify-center gap-y-2 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4">
@@ -97,8 +87,8 @@ export function SiteHero() {
             </div>
 
             <p className="text-muted-foreground mt-6 text-xs font-semibold uppercase tracking-[0.12em]">
-              Five business days &middot; Every number checked against your live
-              store &middot; Free rescan a month later
+              Five days &middot; Every number checked against your store
+              &middot; Free rescan
             </p>
           </div>
 
