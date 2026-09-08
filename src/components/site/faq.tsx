@@ -27,32 +27,42 @@ const FAQS = [
   {
     question: "Who is this for?",
     answer:
-      "Shopify brands where a couple of points of conversion actually move the number. Founders, operators, ecommerce and growth leads. If you know the store could be doing better but not what to change first, that's the gap this fills.",
+      "Shopify brands at the point where a couple of points of conversion move a number that matters. Usually that is a founder, an ecommerce manager or a growth lead at a store doing enough volume that small changes compound. If you already suspect the store could be doing better but cannot say which change to make first, that is the gap this fills.",
   },
   {
-    question: "Is this only for Shopify stores?",
+    question: "Do you work with stores on other platforms?",
     answer:
-      "Yes. Only Shopify storefronts. The process and the benchmarks are specific to the platform, and that's the reason the recommendations are things your team can actually build.",
+      "No, Shopify storefronts only. Themes, apps, variant handling, cart behaviour and the checkout all work in particular ways on Shopify, and knowing those specifics is what keeps the recommendations buildable. A platform-agnostic audit tends to produce advice your developer then has to translate before anyone can act on it.",
   },
   {
     question: "What exactly do I receive?",
     answer:
-      "One document. Every finding ranked by what's worth doing first, each shown on an annotated screenshot of your own store, plus a next-step order of work. Thirty days later, a rescan report showing what shipped and what's new.",
+      "A single document rather than a deck. Every finding is ranked by what is worth doing first, and each one appears on an annotated screenshot of your own store showing the element in question and the change we suggest. There is a short order of work at the end so the list can go straight into a sprint. Thirty days later you get a rescan report covering what shipped, what did not, and anything new that has appeared since.",
+  },
+  {
+    question: "What do you need from me?",
+    answer:
+      "Your store URL and about five minutes on the intake form. We review the public storefront the same way a customer sees it, so there is no admin access to grant, no app to install and no code to add to your site. If there are particular pages, products or hypotheses you want examined closely, the intake form is where to tell us.",
   },
   {
     question: "How long does it take?",
     answer:
-      "Five business days from the moment you finish the intake form, which takes under five minutes.",
+      "Five business days from the moment you submit the intake form. If we need something from you during the review we will ask, but the timeline assumes we will not have to.",
   },
   {
     question: "Do you implement the recommendations?",
     answer:
-      "Not in the $750 audit. That one is analysis and recommendations. If you want the changes made, we'll quote it from the findings once you've read them, so you're scoping against a real list instead of a guess.",
+      "Not as part of the $750 audit, which is analysis and recommendations. Most clients hand the document to their own developer or agency, since the findings are written to be picked up directly. If you would rather we made the changes, we quote that separately once you have read the findings, so you are scoping against a real list instead of an estimate.",
   },
   {
-    question: "What if I already have an agency or an in-house team?",
+    question: "What if we already have an agency or an in-house team?",
     answer:
-      "That's usually the better case. They get a list to work from with no ramp-up, and nobody has to argue about what goes first because the ranking settles it. Most of our audits go straight to a team that's already building.",
+      "That is usually the better case. A team that already knows the codebase can act on a ranked list immediately, and the ranking settles the argument about what goes first. The audit is written as input for people who are already building, not as a replacement for them.",
+  },
+  {
+    question: "What if you do not find much?",
+    answer:
+      "The document contains what the review actually surfaces. Every finding is checked against your live store data before it goes in, so nothing is padded to make the list look longer. If we have not started your review, you can have a full refund.",
   },
 ];
 
