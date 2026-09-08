@@ -1,6 +1,8 @@
 import { SiteNavbar } from "@/components/site/navbar";
 import { SiteHero } from "@/components/site/hero";
 import { SiteFeatures } from "@/components/site/features";
+import { SitePricing } from "@/components/site/pricing";
+import { SiteFaq } from "@/components/site/faq";
 import { SiteFooter } from "@/components/site/footer";
 
 export default function HomePage() {
@@ -10,7 +12,9 @@ export default function HomePage() {
       <main>
         <SiteHero />
         <SiteFeatures />
-        {/* B3, B12, B13 pending — see docs/aceternity-migration.md */}
+        <SitePricing />
+        <SiteFaq />
+        {/* B3 deliverable preview pending — see docs/aceternity-migration.md */}
       </main>
       <SiteFooter />
     </>
