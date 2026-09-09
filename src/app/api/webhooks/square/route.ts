@@ -80,10 +80,17 @@ export async function POST(request: NextRequest) {
   let email = payment.buyer_email_address;
   let buyerName: string | undefined;
   if (!email && payment.order_id) {
-    const stored = await lookupOrderEmail(payment.order_id);
-    if (stored) {
-      email = stored.email;
-      buyerName = stored.name;
+    // Fallback only: Square usually supplies buyer_email_address itself. The
+    // lookup must not be able to fail the webhook, or Square will retry the
+    // delivery indefinitely against a store that is down.
+    try {
+      const stored = await lookupOrderEmail(payment.order_id);
+      if (stored) {
+        email = stored.email;
+        buyerName = stored.name;
+      }
+    } catch (storeError) {
+      console.error("Order email lookup failed — continuing:", storeError);
     }
   }
 

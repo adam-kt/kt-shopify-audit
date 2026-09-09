@@ -60,7 +60,23 @@ export async function POST(request: NextRequest) {
     }
 
     if (orderId && email) {
-      await rememberOrderEmail(orderId, email, name);
+      // Best effort, and deliberately non-fatal.
+      //
+      // This mapping only enriches the Square webhook later; Klaviyo already
+      // has the address from /api/lead, which fires before this route. Square
+      // has by this point created a real payment link, so letting a failure
+      // here reach the catch below would discard a live checkout the buyer
+      // never gets to see. That is exactly what happened when the Upstash
+      // instance went away: every checkout with an email address returned
+      // "Failed to create checkout session" while orphaning a payment link.
+      try {
+        await rememberOrderEmail(orderId, email, name);
+      } catch (storeError) {
+        console.error(
+          "Could not persist order email — continuing to checkout:",
+          storeError
+        );
+      }
     }
 
     return NextResponse.json({ url });
