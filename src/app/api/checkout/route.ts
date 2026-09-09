@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { square } from "@/lib/square";
 import { rememberOrderEmail } from "@/lib/order-email-store";
 import crypto from "crypto";
@@ -60,23 +60,28 @@ export async function POST(request: NextRequest) {
     }
 
     if (orderId && email) {
-      // Best effort, and deliberately non-fatal.
+      // Deferred to after() so it never sits between the buyer and Square.
       //
-      // This mapping only enriches the Square webhook later; Klaviyo already
-      // has the address from /api/lead, which fires before this route. Square
-      // has by this point created a real payment link, so letting a failure
-      // here reach the catch below would discard a live checkout the buyer
-      // never gets to see. That is exactly what happened when the Upstash
-      // instance went away: every checkout with an email address returned
-      // "Failed to create checkout session" while orphaning a payment link.
-      try {
-        await rememberOrderEmail(orderId, email, name);
-      } catch (storeError) {
-        console.error(
-          "Could not persist order email — continuing to checkout:",
-          storeError
-        );
-      }
+      // This mapping only enriches the Square webhook later, and Klaviyo
+      // already has the address from /api/lead, which fires before this route.
+      // Awaiting it cost 4.4s per checkout while the Upstash host was
+      // unreachable: DNS resolution has to time out before the write can fail.
+      // Measured on production, a request with an email took 4.9s against 0.45s
+      // for one without.
+      //
+      // after() runs the callback once the response has been sent, so a slow or
+      // dead store cannot delay checkout, and the write still completes
+      // normally when the store is healthy.
+      after(async () => {
+        try {
+          await rememberOrderEmail(orderId, email, name);
+        } catch (storeError) {
+          console.error(
+            "Could not persist order email — checkout was unaffected:",
+            storeError
+          );
+        }
+      });
     }
 
     return NextResponse.json({ url });
