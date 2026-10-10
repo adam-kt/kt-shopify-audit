@@ -26,6 +26,8 @@ const LINKS = [
   { title: "What we review", href: "/#what-you-get" },
   { title: "Pricing", href: "/#pricing" },
   { title: "FAQ", href: "/#faq" },
+  // The studio's other offer. Nothing else on this site links to it.
+  { title: "AI setup", href: "https://ai.knocktwice.io" },
   { title: "Privacy", href: "/privacy" },
   { title: "Terms", href: "/terms" },
 ];
